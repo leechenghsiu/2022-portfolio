@@ -1,9 +1,12 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
-import Button from 'components/atoms/Button';
+import { NavButton } from 'components/atoms/Button';
 
 import path from 'constants/path';
+
+import { ReactComponent as SidebarActive } from 'images/icon/sidebar-icon-active.svg';
+import { ReactComponent as SidebarUnactive } from 'images/icon/sidebar-icon-unactive.svg';
 
 import styles from './styles.module.scss';
 
@@ -11,16 +14,17 @@ const LinkItem = ({ to, selected = false, onClick = () => {}, children }) => {
 	const { push } = useHistory();
 
 	return (
-		<Button
+		<NavButton
 			color="primary"
 			variant={selected ? 'normal' : 'text'}
 			onClick={() => {
 				push(to);
 				onClick();
 			}}
+			Icon={() => (selected ? <SidebarActive /> : <SidebarUnactive />)}
 		>
 			{children}
-		</Button>
+		</NavButton>
 	);
 };
 
