@@ -1,0 +1,31 @@
+@import 'styles/color.scss';
+@import 'styles/media.scss';
+
+.wrapper {
+	height: 2000px;
+
+	& .intro {
+		position: fixed;
+		top: 50%;
+		left: calc((100vw - 1280px) / 2);
+		transform: translate(0, -50%);
+
+		& > h1 {
+			font-family: 'Noto Sans TC', sans-serif;
+			font-size: 78px;
+			line-height: 82px;
+			font-weight: 800;
+			color: $primary-dark;
+			margin-bottom: 16px;
+		}
+
+		& > p {
+			font-family: 'Noto Sans TC', sans-serif;
+			font-size: 20px;
+			line-height: 28px;
+			font-weight: normal;
+			color: $primary-gray;
+			white-space: pre-wrap;
+		}
+	}
+}

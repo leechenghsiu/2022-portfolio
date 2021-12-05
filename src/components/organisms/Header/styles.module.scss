@@ -1,15 +1,88 @@
 @import 'styles/color.scss';
+@import 'styles/media.scss';
 
 .wrapper {
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	height: 106px;
+	width: 100vw;
 	position: fixed;
-	width: 100%;
-	height: 64px;
-	background-color: $secondary;
-	padding: 8px 16px;
+	z-index: 300;
+	top: -100%;
+	transition: top 1s;
 
-	& > h1 {
-		color: white;
+	&.show {
+		top: 0%;
+	}
+
+	& .container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1280px;
+		width: 100%;
+
+		@media screen and (min-width: $media-desktop) {
+			width: 100%;
+		}
+
+		& > svg {
+			cursor: pointer;
+			transition: transform 0.3s;
+
+			&:hover {
+				transform: scale(0.9);
+			}
+		}
+
+		& > ul {
+			display: flex;
+			margin: 0;
+			padding: 0;
+			height: 32px;
+
+			& * {
+				transition: all 0.3s;
+			}
+
+			& > li {
+				list-style: none;
+
+				&:not(:last-child) {
+					margin-right: 32px;
+				}
+
+				&:hover {
+					transform: scale(0.9);
+
+					& > a {
+						color: $primary-dark;
+					}
+
+					& > button > svg > path {
+						fill: $primary-dark;
+					}
+				}
+
+				& > a {
+					font-family: 'Noto Sans TC', sans-serif;
+					font-weight: 600;
+					font-size: 16px;
+					line-height: 32px;
+					color: $primary-gray;
+					cursor: pointer;
+				}
+
+				& > button {
+					border: none;
+					background-color: transparent;
+					margin: 0;
+					padding: 0;
+					height: 32px;
+					cursor: pointer;
+				}
+			}
+		}
 	}
 }

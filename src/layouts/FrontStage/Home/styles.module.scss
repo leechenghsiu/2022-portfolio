@@ -3,6 +3,7 @@
 
 .homeLayout {
 	display: flex;
-	margin-top: 64px;
-	height: calc(100vh - 64px);
+	flex-direction: column;
+	margin-top: 106px;
+	min-height: calc(100vh - 106px);
 }
