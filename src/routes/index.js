@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { HashRouter, Switch } from 'react-router-dom';
 
 import App from 'layouts/App';
 
@@ -15,7 +15,7 @@ import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
 
 const Routes = props => (
-	<BrowserRouter basename={process.env.PUBLIC_URL}>
+	<HashRouter>
 		<App>
 			<Switch>
 				{/* Front End */}
@@ -26,7 +26,7 @@ const Routes = props => (
 				<AuthRoute path={routePath.backstage} component={DashboardPage} {...props} />
 			</Switch>
 		</App>
-	</BrowserRouter>
+	</HashRouter>
 );
 
 export default Routes;
