@@ -10,7 +10,12 @@
 	position: fixed;
 	z-index: 300;
 	top: -100%;
-	transition: top 1s;
+	transition: top 1s, box-shadow 0.3s;
+	background-color: white;
+
+	&.shadow {
+		box-shadow: 0 0 8px 0 rgba(51, 51, 51, 0.2);
+	}
 
 	&.show {
 		top: 0%;
@@ -66,7 +71,7 @@
 				}
 
 				& > a {
-					font-family: 'Noto Sans TC', sans-serif;
+					font-family: 'Montserrat', sans-serif;
 					font-weight: 600;
 					font-size: 16px;
 					line-height: 32px;

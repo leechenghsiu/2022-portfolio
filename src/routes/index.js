@@ -15,7 +15,7 @@ import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
 
 const Routes = props => (
-	<BrowserRouter>
+	<BrowserRouter basename={process.env.PUBLIC_URL}>
 		<App>
 			<Switch>
 				{/* Front End */}

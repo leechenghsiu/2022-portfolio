@@ -1,5 +1,33 @@
 import { useState, useEffect } from 'react';
 
+// Handle the Dom event
+export const useDom = eventHandlers => {
+	// Only subscribe/unsubscribe on mount/unmount lifecycle
+	useEffect(() => {
+		Object.keys(eventHandlers).forEach(event =>
+			window.addEventListener(event, eventHandlers[event]),
+		);
+
+		return () => {
+			Object.keys(eventHandlers).forEach(event =>
+				window.removeEventListener(event, eventHandlers[event]),
+			);
+		};
+	}, []);
+};
+
+export const useScroll = () => {
+	const [scrollY, setState] = useState(0);
+
+	const scrollEvent = () => {
+		setState(window.scrollY);
+	};
+
+	useDom({ scroll: scrollEvent });
+
+	return { scrollY };
+};
+
 export const useScrollDirection = () => {
 	const [scrollDir, setScrollDir] = useState('up');
 
