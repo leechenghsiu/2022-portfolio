@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { useScroll } from 'utils/hook/event';
 
@@ -27,16 +27,16 @@ const Header = ({ className, open }) => {
 				<Logo />
 				<ul>
 					<li>
-						<Link to="/#skills">SKILLS</Link>
+						<NavLink to="/#skills">SKILLS</NavLink>
 					</li>
 					<li>
-						<Link to="/#projects">PROJECTS</Link>
+						<NavLink to="/#projects">PROJECTS</NavLink>
 					</li>
 					<li>
-						<Link to="/#experiences">EXPERIENCES</Link>
+						<NavLink to="/#experiences">EXPERIENCES</NavLink>
 					</li>
 					<li>
-						<Link to="/#contact">CONTACT</Link>
+						<NavLink to="/#contact">CONTACT</NavLink>
 					</li>
 					<li>
 						<button type="button" onClick={() => {}}>
