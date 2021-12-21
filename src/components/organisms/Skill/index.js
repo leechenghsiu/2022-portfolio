@@ -24,12 +24,6 @@ const Skill = ({ hitFlag }) => {
 						filledText="Familiar with developing web front-end from 0 to 1 by using React, including Data Management Library such as Redux, Redux Saga, etc."
 					/>
 					<FilledText
-						targetProgress={0.7}
-						start={active}
-						title="React Native"
-						filledText="Be able to create simple cross-platform applications, and understand publish policies of both platforms."
-					/>
-					<FilledText
 						targetProgress={0.9}
 						start={active}
 						title="HTML/CSS"
@@ -42,15 +36,21 @@ const Skill = ({ hitFlag }) => {
 						filledText="Interested in following the latest version of ECMAScript, and understanding the differences between JavaScript and the other programming languages."
 					/>
 					<FilledText
+						targetProgress={0.7}
+						start={active}
+						title="React Native"
+						filledText="Be able to create simple cross-platform applications, and understand publish policies of both platforms."
+					/>
+					<FilledText
 						targetProgress={0.5}
 						start={active}
 						title="TypeScript"
 						filledText="Due to its strongly-typed feature, making me form a habit of carefulness when manipulating data."
 					/>
 					<FilledText
-						targetProgress={0.4}
+						targetProgress={0.5}
 						start={active}
-						title="User Experience"
+						title="UI & UX"
 						filledText="Matters aesthetic a lot when developing websites, and cares about layout, flow, structure, experience in both code and user interface."
 					/>
 					<FilledText

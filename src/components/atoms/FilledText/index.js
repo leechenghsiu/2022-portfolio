@@ -9,11 +9,14 @@ const FilledText = ({ title, filledText, targetProgress, start }) => {
 	const spanRef = useRef(null);
 
 	const levelColorMap = useMemo(() => {
-		if (targetProgress >= 0.8) {
+		if (targetProgress > 0.7) {
 			return '#4cd265';
 		}
-		if (targetProgress >= 0) {
-			return '#4cd265';
+		if (targetProgress > 0.4) {
+			return '#db995a';
+		}
+		if (targetProgress > 0) {
+			return '#5299d3';
 		}
 		return '#f1faee75';
 	}, [targetProgress]);
@@ -58,7 +61,7 @@ const Text = styled.h2`
 	width: 100%;
 	font-size: 16px;
 	font-family: 'Noto Sans TC', sans-serif;
-	line-height: 1.2;
+	line-height: 20px;
 	letter-spacing: 1.5px;
 	background-clip: text;
 	-webkit-background-clip: text;
@@ -72,8 +75,8 @@ const Text = styled.h2`
 		position: absolute;
 		bottom: calc(var(--progress) * 100%);
 		left: 0;
-		transform: translate(calc(-100% - 2px), calc(50% + 4px));
-		color: #4cd265;
+		transform: translate(calc(-100% - 2px), calc(50% + 5px));
+		color: ${props => props.color};
 		font-size: 12px;
 		line-height: 12px;
 	}
