@@ -11,6 +11,10 @@
 		top: calc(100% - 106px);
 		transform: translate(0, -50%);
 
+		@media screen and (max-width: $media-desktop) {
+			left: 40px;
+		}
+
 		& > h1 {
 			font-family: 'Noto Sans TC', sans-serif;
 			font-size: 78px;

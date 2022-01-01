@@ -28,8 +28,9 @@
 		max-width: 1280px;
 		width: 100%;
 
-		@media screen and (min-width: $media-desktop) {
+		@media screen and (max-width: $media-desktop) {
 			width: 100%;
+			padding: 0 40px;
 		}
 
 		& > svg {
@@ -46,6 +47,10 @@
 			margin: 0;
 			padding: 0;
 			height: 32px;
+
+			@media screen and (max-width: $media-tablet) {
+				display: none;
+			}
 
 			& * {
 				transition: all 0.3s;
