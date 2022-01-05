@@ -1,0 +1,19 @@
+@import 'styles/color.scss';
+@import 'styles/media.scss';
+
+.container {
+	height: 136px;
+	padding: 24px 40px;
+	box-shadow: 0 12px 24px 0px #00000010;
+	transition: all 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: 0 12px 24px 0px #00000020;
+	}
+
+	& > h3 {
+		font-family: 'Montserrat', sans-serif;
+		color: $primary-dark;
+	}
+}

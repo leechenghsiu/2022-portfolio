@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { use100vh } from 'react-div-100vh';
 
+import { useModal } from 'models/modal';
+
 import { useScroll } from 'utils/hook/event';
+
 import Intro from 'components/organisms/Intro';
 import Skill from 'components/organisms/Skill';
+import Project from 'components/organisms/Project';
 
 import styles from './styles.module.scss';
 
@@ -11,9 +15,10 @@ export const HomePage = () => {
 	const height = use100vh();
 	const { scrollY } = useScroll();
 	const [hitFlag, setHitFlag] = useState('intro');
+	const [{ type }] = useModal();
 
 	useEffect(() => {
-		if (height) {
+		if (height && type === '') {
 			if (scrollY < height * 0.5) {
 				setHitFlag('intro');
 			}
@@ -21,7 +26,7 @@ export const HomePage = () => {
 				setHitFlag('skills');
 			}
 			if (scrollY >= height * 1.2) {
-				setHitFlag('???');
+				setHitFlag('project');
 			}
 		}
 	}, [scrollY]);
@@ -30,6 +35,7 @@ export const HomePage = () => {
 		<div className={styles.homeLayout}>
 			<Intro hitFlag={hitFlag} />
 			<Skill hitFlag={hitFlag} />
+			<Project hitFlag={hitFlag} />
 		</div>
 	);
 };

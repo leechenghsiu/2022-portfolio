@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
 
@@ -8,12 +8,16 @@ import styles from './styles.module.scss';
 
 const Skill = ({ hitFlag }) => {
 	const height = use100vh();
-	const active = hitFlag === 'skills';
+	const [active, setActive] = useState(false);
+
+	useEffect(() => {
+		if (!active && hitFlag === 'skills') setActive(true);
+	}, [hitFlag]);
 
 	return (
 		<div className={styles.wrapper}>
 			<div
-				className={classnames(styles.container, active && styles.fixed)}
+				className={classnames(styles.container, hitFlag === 'skills' && styles.fixed)}
 				style={{ height: 0.7 * height }}
 			>
 				<div className={styles.content}>

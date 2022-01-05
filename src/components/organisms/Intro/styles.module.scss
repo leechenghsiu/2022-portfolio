@@ -15,22 +15,14 @@
 			left: 40px;
 		}
 
-		& > h1 {
-			font-family: 'Noto Sans TC', sans-serif;
-			font-size: 78px;
-			line-height: 82px;
-			font-weight: 800;
-			color: $primary-dark;
-			margin-bottom: 16px;
-		}
-
-		& > p {
+		& .sectionTitle {
 			font-family: 'Montserrat', sans-serif;
 			font-size: 20px;
 			line-height: 28px;
 			font-weight: normal;
 			color: $primary-gray;
 			white-space: pre-wrap;
+			margin-top: 16px;
 		}
 
 		&.fixed {
