@@ -1,26 +1,35 @@
 {
   "files": {
-    "main.css": "/2021-portfolio/static/css/main.d5e0f9b3.chunk.css",
-    "main.js": "/2021-portfolio/static/js/main.e041dbe8.chunk.js",
-    "main.js.map": "/2021-portfolio/static/js/main.e041dbe8.chunk.js.map",
+    "main.css": "/2021-portfolio/static/css/main.d2df1d6a.chunk.css",
+    "main.js": "/2021-portfolio/static/js/main.d4a4b44e.chunk.js",
+    "main.js.map": "/2021-portfolio/static/js/main.d4a4b44e.chunk.js.map",
     "runtime-main.js": "/2021-portfolio/static/js/runtime-main.689eca6c.js",
     "runtime-main.js.map": "/2021-portfolio/static/js/runtime-main.689eca6c.js.map",
-    "static/js/2.30722ced.chunk.js": "/2021-portfolio/static/js/2.30722ced.chunk.js",
-    "static/js/2.30722ced.chunk.js.map": "/2021-portfolio/static/js/2.30722ced.chunk.js.map",
+    "static/js/2.9e5b023a.chunk.js": "/2021-portfolio/static/js/2.9e5b023a.chunk.js",
+    "static/js/2.9e5b023a.chunk.js.map": "/2021-portfolio/static/js/2.9e5b023a.chunk.js.map",
     "static/js/3.1e044ee0.chunk.js": "/2021-portfolio/static/js/3.1e044ee0.chunk.js",
     "static/js/3.1e044ee0.chunk.js.map": "/2021-portfolio/static/js/3.1e044ee0.chunk.js.map",
     "index.html": "/2021-portfolio/index.html",
-    "static/css/main.d5e0f9b3.chunk.css.map": "/2021-portfolio/static/css/main.d5e0f9b3.chunk.css.map",
-    "static/js/2.30722ced.chunk.js.LICENSE.txt": "/2021-portfolio/static/js/2.30722ced.chunk.js.LICENSE.txt",
+    "static/css/main.d2df1d6a.chunk.css.map": "/2021-portfolio/static/css/main.d2df1d6a.chunk.css.map",
+    "static/js/2.9e5b023a.chunk.js.LICENSE.txt": "/2021-portfolio/static/js/2.9e5b023a.chunk.js.LICENSE.txt",
+    "static/media/afa-achievement-thumbnail.ce0c04fc.jpg": "/2021-portfolio/static/media/afa-achievement-thumbnail.ce0c04fc.jpg",
+    "static/media/beanbon-thumbnail.f0a3710a.jpg": "/2021-portfolio/static/media/beanbon-thumbnail.f0a3710a.jpg",
+    "static/media/ghowa-thumbnail.74ab171f.jpg": "/2021-portfolio/static/media/ghowa-thumbnail.74ab171f.jpg",
+    "static/media/hib-thumbnail.60e35f3f.jpg": "/2021-portfolio/static/media/hib-thumbnail.60e35f3f.jpg",
     "static/media/language.0556546d.svg": "/2021-portfolio/static/media/language.0556546d.svg",
     "static/media/logo.edee02cc.svg": "/2021-portfolio/static/media/logo.edee02cc.svg",
+    "static/media/machi-thumbnail.2ac2d97c.jpg": "/2021-portfolio/static/media/machi-thumbnail.2ac2d97c.jpg",
+    "static/media/no-food-no-course-thumbnail.f69a9043.jpg": "/2021-portfolio/static/media/no-food-no-course-thumbnail.f69a9043.jpg",
+    "static/media/o2o-thumbnail.85f9f44e.jpg": "/2021-portfolio/static/media/o2o-thumbnail.85f9f44e.jpg",
     "static/media/sidebar-icon-active.57eee371.svg": "/2021-portfolio/static/media/sidebar-icon-active.57eee371.svg",
-    "static/media/sidebar-icon-unactive.88dce39a.svg": "/2021-portfolio/static/media/sidebar-icon-unactive.88dce39a.svg"
+    "static/media/sidebar-icon-unactive.88dce39a.svg": "/2021-portfolio/static/media/sidebar-icon-unactive.88dce39a.svg",
+    "static/media/titas-thumbnail.05d609b3.jpg": "/2021-portfolio/static/media/titas-thumbnail.05d609b3.jpg",
+    "static/media/vespa-thumbnail.121c6b46.jpg": "/2021-portfolio/static/media/vespa-thumbnail.121c6b46.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.689eca6c.js",
-    "static/js/2.30722ced.chunk.js",
-    "static/css/main.d5e0f9b3.chunk.css",
-    "static/js/main.e041dbe8.chunk.js"
+    "static/js/2.9e5b023a.chunk.js",
+    "static/css/main.d2df1d6a.chunk.css",
+    "static/js/main.d4a4b44e.chunk.js"
   ]
 }
