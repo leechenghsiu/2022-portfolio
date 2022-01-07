@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
+
+import { projectImageRef } from 'services/firebase';
 
 import styles from './styles.module.scss';
 
 const ProjectCard = ({ className, title = '', thumbnail, onClick = () => {} }) => {
-	const a = 1;
+	const [imageUrl, setImageUrl] = useState('');
+
+	async function getImageUrl() {
+		const url = await projectImageRef(thumbnail);
+		setImageUrl(url);
+	}
+
+	useEffect(() => {
+		getImageUrl();
+	}, []);
+
 	return (
 		<div
 			role="button"
@@ -12,7 +24,7 @@ const ProjectCard = ({ className, title = '', thumbnail, onClick = () => {} }) =
 			onKeyPress={() => {}}
 			className={classnames(styles.container, className)}
 			onClick={onClick}
-			style={{ backgroundImage: `url(${thumbnail})` }}
+			style={{ backgroundImage: `url(${imageUrl})` }}
 		>
 			<h2>{title}</h2>
 		</div>
