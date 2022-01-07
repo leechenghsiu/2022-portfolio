@@ -25,7 +25,7 @@ export const HomePage = () => {
 			if (scrollY >= height * 0.5) {
 				setHitFlag('skills');
 			}
-			if (scrollY >= height * 1.2) {
+			if (scrollY >= height * 1.5) {
 				setHitFlag('project');
 			}
 		}

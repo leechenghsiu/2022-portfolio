@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import styles from './styles.module.scss';
 
-const ProjectCard = ({ className, title = '', onClick = () => {} }) => {
+const ProjectCard = ({ className, title = '', thumbnail, onClick = () => {} }) => {
 	const a = 1;
 	return (
 		<div
@@ -12,8 +12,9 @@ const ProjectCard = ({ className, title = '', onClick = () => {} }) => {
 			onKeyPress={() => {}}
 			className={classnames(styles.container, className)}
 			onClick={onClick}
+			style={{ backgroundImage: `url(${thumbnail})` }}
 		>
-			<h3>{title}</h3>
+			<h2>{title}</h2>
 		</div>
 	);
 };
