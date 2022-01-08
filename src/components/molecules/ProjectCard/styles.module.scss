@@ -3,11 +3,12 @@
 
 .container {
 	display: flex;
-	align-items: flex-end;
+	flex-direction: column;
+	justify-content: flex-end;
 	height: 136px;
 	padding: 12px 24px;
 	box-shadow: 0 12px 24px 0px #00000005;
-	transition: all 0.3s;
+	transition: box-shadow 0.3s, transform 0.3s;
 	cursor: pointer;
 	background-size: 100%;
 	background-position: center;
@@ -35,5 +36,20 @@
 		color: white;
 		text-shadow: 1px 2px 4px #7a7a7a;
 		z-index: 1;
+		margin-bottom: 4px;
+	}
+
+	& > .tagList {
+		display: flex;
+		gap: 8px;
+
+		& > p {
+			color: white;
+			background-color: $primary-dark-hover;
+			border-radius: 4px;
+			padding: 2px 8px;
+			font-size: 10px;
+			font-family: 'Montserrat', sans-serif;
+		}
 	}
 }
