@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 
 import { useModal } from 'models/modal';
@@ -10,7 +11,7 @@ import ProjectInnerModal from 'components/molecules/ProjectInnerModal';
 
 import styles from './styles.module.scss';
 
-const Section = ({ start, data, sectionTitle, subTitle }) => {
+const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 	const [, { openModal }] = useModal();
 	const [, { setTargetProject }] = useProject();
 
@@ -27,7 +28,7 @@ const Section = ({ start, data, sectionTitle, subTitle }) => {
 	}, [start]);
 
 	return (
-		<div className={styles.project}>
+		<div className={classnames(styles.project, last && styles.last)}>
 			<SectionTitle className={styles.sectionTitle} title={sectionTitle}>
 				<p>{subTitle}</p>
 			</SectionTitle>
@@ -78,6 +79,7 @@ const Project = ({ hitFlag }) => {
 					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
 				/>
 				<Section
+					last
 					start={hitFlag === 'project'}
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'side')

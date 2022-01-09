@@ -9,6 +9,7 @@ import Intro from 'components/organisms/Intro';
 import Skill from 'components/organisms/Skill';
 import Project from 'components/organisms/Project';
 import Experience from 'components/organisms/Experience';
+import Contact from 'components/organisms/Contact';
 
 import styles from './styles.module.scss';
 
@@ -37,7 +38,8 @@ export const HomePage = () => {
 			<Intro hitFlag={hitFlag} />
 			<Skill hitFlag={hitFlag} />
 			<Project hitFlag={hitFlag} />
-			<Experience hitFlag={hitFlag} />
+			<Experience />
+			<Contact />
 		</div>
 	);
 };

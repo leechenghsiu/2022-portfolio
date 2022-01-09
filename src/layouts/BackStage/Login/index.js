@@ -5,8 +5,6 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import { auth } from 'services/firebaseAuth';
 
-import routePath from 'constants/path';
-
 import styles from './styles.module.scss';
 
 export const LoginPage = () => {

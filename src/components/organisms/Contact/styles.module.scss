@@ -1,0 +1,60 @@
+@import 'styles/color.scss';
+@import 'styles/media.scss';
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	background-color: $primary-dark;
+	padding: 120px 0;
+
+	& .container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		max-width: 1280px;
+
+		& .contactWrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 80px;
+
+			& > p {
+				font-family: 'Montserrat', sans-serif;
+				color: $background;
+				font-weight: 600;
+				margin-right: 32px;
+			}
+
+			& > a {
+				display: flex;
+				align-items: center;
+				font-family: 'Noto Sans TC', sans-serif;
+				color: $background;
+				margin-right: 32px;
+
+				& > svg {
+					margin-right: 4px;
+				}
+
+				& > span {
+					font-family: 'Noto Sans TC', sans-serif;
+					color: $background;
+				}
+			}
+		}
+
+		& .copyright {
+			display: flex;
+			justify-content: center;
+
+			& > a {
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 600;
+				color: $background;
+			}
+		}
+	}
+}
