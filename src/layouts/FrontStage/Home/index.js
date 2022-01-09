@@ -27,8 +27,11 @@ export const HomePage = () => {
 			if (scrollY >= height * 0.5) {
 				setHitFlag('skills');
 			}
-			if (scrollY >= height * 1.5) {
+			if (scrollY >= height * 1.3) {
 				setHitFlag('project');
+			}
+			if (scrollY >= height * 2.6) {
+				setHitFlag('experience');
 			}
 		}
 	}, [scrollY]);
@@ -38,7 +41,7 @@ export const HomePage = () => {
 			<Intro hitFlag={hitFlag} />
 			<Skill hitFlag={hitFlag} />
 			<Project hitFlag={hitFlag} />
-			<Experience />
+			<Experience hitFlag={hitFlag} />
 			<Contact />
 		</div>
 	);

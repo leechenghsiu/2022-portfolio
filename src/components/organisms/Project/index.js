@@ -34,7 +34,7 @@ const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 			</SectionTitle>
 			<div className={styles.content} style={{ minHeight: 136 * Math.ceil(data.length / 2) }}>
 				{transitions((style, project) => (
-					<animated.div className={styles.animated} style={style}>
+					<animated.div style={style}>
 						<ProjectCard
 							key={project.id}
 							title={project.title}

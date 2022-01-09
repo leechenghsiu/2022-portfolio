@@ -6,10 +6,49 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	margin-bottom: 120px;
+	background-color: #f1efef;
+	padding: 80px 0 160px;
 
 	& .container {
 		width: 100%;
 		max-width: 1280px;
+
+		& .sectionTitle {
+			margin-bottom: 32px;
+		}
+
+		& .experience {
+			background-color: $background;
+			border-radius: 10px;
+			padding: 24px 40px;
+			margin-bottom: 40px;
+			border: 1px solid #f1efef;
+			transition: border 0.3s;
+
+			&:hover {
+				border: 1px solid $primary-gray;
+			}
+
+			&.last {
+				margin-bottom: 0;
+			}
+
+			& > h3 {
+				font-family: 'Montserrat', sans-serif;
+				font-weight: 600;
+				margin-bottom: 24px;
+				text-decoration: underline;
+			}
+
+			& .content {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 24px;
+
+				@media screen and (max-width: $media-tablet) {
+					grid-template-columns: 1fr;
+				}
+			}
+		}
 	}
 }

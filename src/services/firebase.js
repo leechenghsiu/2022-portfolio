@@ -17,6 +17,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Firestore
 const db = getFirestore(firebaseApp);
 export const projectRef = collection(db, 'project');
+export const experienceRef = collection(db, 'experience');
 
 // Firebase Storage
 const storage = getStorage(firebaseApp);

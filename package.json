@@ -15,6 +15,7 @@
 		"@testing-library/user-event": "^12.1.10",
 		"axios": "^0.21.4",
 		"classnames": "^2.2.6",
+		"dayjs": "^1.10.7",
 		"dotenv": "^8.2.0",
 		"firebase": "^9.6.1",
 		"history": "^5.0.0",
