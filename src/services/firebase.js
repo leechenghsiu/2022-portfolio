@@ -20,6 +20,6 @@ export const projectRef = collection(db, 'project');
 
 // Firebase Storage
 const storage = getStorage(firebaseApp);
-export const projectImageRef = path => getDownloadURL(ref(storage, path));
+export const storageRef = path => getDownloadURL(ref(storage, path));
 
 export default firebaseApp;

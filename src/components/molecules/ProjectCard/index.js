@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 
-import { projectImageRef } from 'services/firebase';
+import { storageRef } from 'services/firebase';
 
 import styles from './styles.module.scss';
 
@@ -9,7 +9,7 @@ const ProjectCard = ({ className, title = '', thumbnail = '', tag = [], onClick 
 	const [imageUrl, setImageUrl] = useState('');
 
 	async function getImageUrl() {
-		const url = await projectImageRef(thumbnail);
+		const url = await storageRef(thumbnail);
 		const img = new Image();
 		img.src = url;
 		img.onload = () => setImageUrl(url);
