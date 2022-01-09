@@ -14,7 +14,7 @@ export const LoginPage = () => {
 	const uiConfig = {
 		signInFlow: 'redirect',
 		signInOptions: [EmailAuthProvider.PROVIDER_ID],
-		signInSuccessUrl: `${window.location.origin}/#${routePath.backstage}`,
+		signInSuccessUrl: window.location.href.replace('login', ''),
 		callbacks: {
 			signInSuccessWithAuthResult: (_, redirectUrl) => {
 				push(redirectUrl);
