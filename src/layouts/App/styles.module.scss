@@ -1,6 +1,9 @@
 @import 'styles/color.scss';
 
 .wrapper {
-	display: flex;
 	min-height: 100vh;
+
+	&.isBackstage {
+		display: flex;
+	}
 }

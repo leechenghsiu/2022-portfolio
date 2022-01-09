@@ -2,7 +2,7 @@ export default {
 	home: '/',
 	backstage: '/backstage',
 	backstageLogin: '/backstage/login',
-	backstageWorks: '/backstage/works',
-	backstageAbout: '/backstage/about',
-	backstageResume: '/backstage/resume',
+	backstageSkill: '/backstage/skill',
+	backstageProject: '/backstage/project',
+	backstageExperience: '/backstage/experience',
 };

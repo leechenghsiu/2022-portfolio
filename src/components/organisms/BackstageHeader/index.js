@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
+import { useAuth } from 'models/auth';
+
 import { NavButton } from 'components/atoms/Button';
 
 import path from 'constants/path';
@@ -33,6 +35,12 @@ const LinkItem = ({ className, to = '', selected = false, onClick = () => {}, ch
 
 const BackstageHeader = () => {
 	const { pathname } = useLocation();
+	const [, { setLogout }] = useAuth();
+
+	const handleLogout = () => {
+		setLogout();
+		authMethods.signOut();
+	};
 
 	return (
 		<div className={styles.wrapper}>
@@ -42,16 +50,16 @@ const BackstageHeader = () => {
 					<LinkItem to={path.backstage} selected={pathname === path.backstage}>
 						Dashboard
 					</LinkItem>
-					<LinkItem to={path.backstageWorks} selected={pathname === path.backstageWorks}>
-						Works
+					<LinkItem to={path.backstageSkill} selected={pathname === path.backstageSkill}>
+						Skill
 					</LinkItem>
-					<LinkItem to={path.backstageAbout} selected={pathname === path.backstageAbout}>
-						About
+					<LinkItem to={path.backstageProject} selected={pathname === path.backstageProject}>
+						Project
 					</LinkItem>
-					<LinkItem to={path.backstageResume} selected={pathname === path.backstageResume}>
-						Resume
+					<LinkItem to={path.backstageExperience} selected={pathname === path.backstageExperience}>
+						Experience
 					</LinkItem>
-					<LinkItem className={styles.logoutButton} onClick={authMethods.signOut}>
+					<LinkItem className={styles.logoutButton} onClick={handleLogout}>
 						Logout
 					</LinkItem>
 				</>

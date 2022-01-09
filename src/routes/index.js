@@ -13,6 +13,9 @@ import { HomePage } from 'layouts/FrontStage/Home';
 // Back Stage
 import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
+import { SkillPage } from 'layouts/BackStage/Skill';
+import { ProjectPage } from 'layouts/BackStage/Project';
+import { ExperiencePage } from 'layouts/BackStage/Experience';
 
 const Routes = props => (
 	<HashRouter>
@@ -24,6 +27,14 @@ const Routes = props => (
 				{/* Back Stage */}
 				<NavRoute exact path={routePath.backstageLogin} component={LoginPage} {...props} />
 				<AuthRoute exact path={routePath.backstage} component={DashboardPage} {...props} />
+				<AuthRoute exact path={routePath.backstageSkill} component={SkillPage} {...props} />
+				<AuthRoute exact path={routePath.backstageProject} component={ProjectPage} {...props} />
+				<AuthRoute
+					exact
+					path={routePath.backstageExperience}
+					component={ExperiencePage}
+					{...props}
+				/>
 			</Switch>
 		</App>
 	</HashRouter>
