@@ -44,16 +44,18 @@ const ProjectInnerModal = () => {
 			<div className={styles.modalWrapper} style={{ minHeight: 0.9 * height, top: 0.1 * height }}>
 				<div className={styles.modalContainer}>
 					<Close onClick={handleClose} />
-					<div className={classnames(styles.player, loading && 'loading-skeleton')}>
-						<ReactPlayer
-							width="1280px"
-							height="720px"
-							url={videoUrl}
-							loop
-							playing
-							onReady={() => setLoading(false)}
-						/>
-					</div>
+					{videoUrl && (
+						<div className={classnames(styles.player, loading && 'loading-skeleton')}>
+							<ReactPlayer
+								width="1280px"
+								height="720px"
+								url={videoUrl}
+								loop
+								playing
+								onReady={() => setLoading(false)}
+							/>
+						</div>
+					)}
 					<div className={styles.content}>
 						<h1>{targetProject.title}</h1>
 					</div>
