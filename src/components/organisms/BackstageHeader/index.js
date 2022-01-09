@@ -34,6 +34,7 @@ const LinkItem = ({ className, to = '', selected = false, onClick = () => {}, ch
 };
 
 const BackstageHeader = () => {
+	const { push } = useHistory();
 	const { pathname } = useLocation();
 	const [, { setLogout }] = useAuth();
 
@@ -44,7 +45,15 @@ const BackstageHeader = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<h1>Backstage.</h1>
+			<div
+				className={styles.title}
+				role="button"
+				tabIndex={0}
+				onKeyPress={() => {}}
+				onClick={() => push(path.backstage)}
+			>
+				<h1>Backstage.</h1>
+			</div>
 			{pathname !== path.backstageLogin && (
 				<>
 					<LinkItem to={path.backstage} selected={pathname === path.backstage}>

@@ -4,6 +4,12 @@
 	"private": true,
 	"homepage": "https://leechenghsiu.github.io/2022-portfolio/",
 	"dependencies": {
+		"@emotion/react": "^11.7.1",
+		"@emotion/styled": "^11.6.0",
+		"@mui/icons-material": "^5.2.5",
+		"@mui/material": "^5.2.7",
+		"@mui/styles": "^5.2.3",
+		"@mui/x-data-grid": "^5.2.2",
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
