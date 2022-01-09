@@ -166,7 +166,7 @@ const reducer = {
 		{
 			loginForm: defaultLoginFormData,
 			token: defaultTokenData,
-			isLogin: true,
+			isLogin: false,
 		},
 	),
 };
@@ -179,6 +179,8 @@ const selectAuth = createSelector(
 
 export const useAuth = () =>
 	useRedux(selectAuth, {
+		setLogin,
+		setLogout,
 		logout,
 	});
 

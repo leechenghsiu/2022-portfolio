@@ -5,7 +5,9 @@ import { isExist } from 'utils/helper';
 
 import styles from './styles.module.scss';
 
-export const NavButton = ({ ...props }) => <Button className={styles.navButton} {...props} />;
+export const NavButton = ({ className, ...props }) => (
+	<Button className={classnames(styles.navButton, className)} {...props} />
+);
 
 const Button = ({
 	children,

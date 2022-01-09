@@ -1,31 +1,16 @@
-import firebase, { userRef } from './firebase';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+
+import firebaseApp from './firebase';
+
+export const auth = getAuth(firebaseApp);
 
 export const authMethods = {
-	signIn: async () => {
+	signIn: async ({ email, password }) => {
 		try {
-			const provider = new firebase.auth.GoogleAuthProvider();
-			provider.addScope('profile');
-
-			await firebase
-				.auth()
-				.signInWithPopup(provider)
-				.then(result => {
-					const {
-						user: { uid, displayName, photoURL },
-					} = result;
-
-					userRef
-						.doc(uid)
-						.get()
-						.then(snapshot => {
-							if (!snapshot.exists) {
-								userRef.doc(uid).set({
-									name: displayName,
-									avatar: photoURL,
-									createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-								});
-							}
-						});
+			await signInWithEmailAndPassword(auth, email, password)
+				.then(userCredential => {
+					const { user } = userCredential;
+					console.log('login success', user);
 				})
 				.catch(error => {
 					console.error(error);
@@ -36,10 +21,9 @@ export const authMethods = {
 	},
 	signOut: async cb => {
 		try {
-			await firebase
-				.auth()
-				.signOut()
+			await signOut(auth)
 				.then(() => {
+					console.log('logout success');
 					if (typeof cb === 'function') cb();
 				})
 				.catch(error => {
@@ -47,7 +31,6 @@ export const authMethods = {
 				});
 		} catch (error) {
 			console.error(error);
-			if (typeof cb === 'function') cb();
 		}
 	},
 };

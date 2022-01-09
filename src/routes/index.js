@@ -16,14 +16,14 @@ import { LoginPage } from 'layouts/BackStage/Login';
 
 const Routes = props => (
 	<HashRouter>
-		<App>
+		<App {...props}>
 			<Switch>
 				{/* Front End */}
 				<NavRoute exact path={routePath.home} component={HomePage} {...props} />
 
 				{/* Back Stage */}
 				<NavRoute exact path={routePath.backstageLogin} component={LoginPage} {...props} />
-				<AuthRoute path={routePath.backstage} component={DashboardPage} {...props} />
+				<AuthRoute exact path={routePath.backstage} component={DashboardPage} {...props} />
 			</Switch>
 		</App>
 	</HashRouter>
