@@ -14,7 +14,7 @@ import { HomePage } from 'layouts/FrontStage/Home';
 import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
 import { SkillPage } from 'layouts/BackStage/Skill';
-import { ProjectPage } from 'layouts/BackStage/Project';
+import { ProjectPage, ProjectCreatePage, ProjectEditPage } from 'layouts/BackStage/Project';
 import { ExperiencePage } from 'layouts/BackStage/Experience';
 
 const Routes = props => (
@@ -29,6 +29,18 @@ const Routes = props => (
 				<AuthRoute exact path={routePath.backstage} component={DashboardPage} {...props} />
 				<AuthRoute exact path={routePath.backstageSkill} component={SkillPage} {...props} />
 				<AuthRoute exact path={routePath.backstageProject} component={ProjectPage} {...props} />
+				<AuthRoute
+					exact
+					path={routePath.backstageProjectCreate}
+					component={ProjectCreatePage}
+					{...props}
+				/>
+				<AuthRoute
+					exact
+					path={`${routePath.backstageProject}/:id`}
+					component={ProjectEditPage}
+					{...props}
+				/>
 				<AuthRoute
 					exact
 					path={routePath.backstageExperience}

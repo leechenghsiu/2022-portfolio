@@ -69,7 +69,7 @@ const Project = ({ hitFlag }) => {
 					start={hitFlag === 'project'}
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'student')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Student Projects"
 					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
 				/>
@@ -77,7 +77,7 @@ const Project = ({ hitFlag }) => {
 					start={hitFlag === 'project'}
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'work')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Work Projects"
 					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
 				/>
@@ -86,7 +86,7 @@ const Project = ({ hitFlag }) => {
 					start={hitFlag === 'project'}
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'side')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Side Projects"
 					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
 				/>

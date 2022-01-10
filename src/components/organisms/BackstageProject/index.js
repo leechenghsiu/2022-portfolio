@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { EditOutlined, DeleteOutline } from '@mui/icons-material';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 
 import { useProject } from 'models/project';
+
+import routePath from 'constants/path';
 
 import BackstageSectionTitle from 'components/atoms/BackstageSectionTitle';
 import DataGrid from 'components/molecules/DataGrid';
@@ -12,8 +17,15 @@ import styles from './styles.module.scss';
 const typeMap = { student: 'Student Project', work: 'Work Project', side: 'Side Project' };
 
 const BackstageProject = () => {
+	const { push } = useHistory();
 	const [search, setSearch] = useState('');
 	const [{ projectList }, { fetchProjects }] = useProject();
+	const filteredProjectList = useMemo(() => {
+		if (search !== '') {
+			return projectList.filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
+		}
+		return projectList;
+	}, [search, projectList]);
 	const columns = [
 		{ field: 'title', headerName: 'Title', flex: 1 },
 		{ field: 'type', headerName: 'Type', flex: 1, valueFormatter: ({ value }) => typeMap[value] },
@@ -25,20 +37,20 @@ const BackstageProject = () => {
 		},
 		{
 			field: 'id',
-			headerName: '',
+			headerName: 'Actions',
 			sortable: false,
 			renderCell: ({ value }) => (
 				<>
-					<EditOutlined
-						style={{ cursor: 'pointer', marginRight: 8 }}
-						color="action"
-						onClick={() => console.log(value)}
-					/>
-					<DeleteOutline
-						style={{ cursor: 'pointer' }}
-						color="action"
-						onClick={() => console.log(value)}
-					/>
+					<Tooltip title="Edit">
+						<IconButton onClick={() => push(`${routePath.backstageProject}/${value}`)}>
+							<EditOutlined color="action" />
+						</IconButton>
+					</Tooltip>
+					<Tooltip title="Delete">
+						<IconButton onClick={() => console.log(value)}>
+							<DeleteOutline color="action" />
+						</IconButton>
+					</Tooltip>
 				</>
 			),
 		},
@@ -52,7 +64,7 @@ const BackstageProject = () => {
 		<div className={styles.wrapper}>
 			<BackstageSectionTitle title="Projects" />
 			<ActionBar value={search} onChange={setSearch} />
-			<DataGrid rows={projectList} columns={columns} />
+			<DataGrid rows={filteredProjectList} columns={columns} />
 		</div>
 	);
 };

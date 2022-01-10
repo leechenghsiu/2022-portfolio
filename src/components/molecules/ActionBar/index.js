@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
 import TextField from '@mui/material/TextField';
+import { useHistory } from 'react-router-dom';
+
+import routePath from 'constants/path';
 
 import Button from 'components/atoms/Button';
 
@@ -31,6 +34,7 @@ const useStyles = makeStyles({
 
 const ActionBar = ({ value, onChange }) => {
 	const classes = useStyles();
+	const { push } = useHistory();
 
 	return (
 		<div className={styles.wrapper}>
@@ -44,7 +48,11 @@ const ActionBar = ({ value, onChange }) => {
 					type: 'search',
 				}}
 			/>
-			<Button className={styles.button} size="large" onClick={() => {}}>
+			<Button
+				className={styles.button}
+				size="large"
+				onClick={() => push(routePath.backstageProjectCreate)}
+			>
 				Add New
 			</Button>
 		</div>

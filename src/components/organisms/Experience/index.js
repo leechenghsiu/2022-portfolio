@@ -70,14 +70,14 @@ const Experience = ({ hitFlag }) => {
 					start={hitFlag === 'experience'}
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'education')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Education"
 				/>
 				<Section
 					start={hitFlag === 'experience'}
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'job')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Work Experiences"
 				/>
 				<Section
@@ -85,7 +85,7 @@ const Experience = ({ hitFlag }) => {
 					start={hitFlag === 'experience'}
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'activity')
-						.sort((a, b) => a.weight - b.weight)}
+						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Activities"
 				/>
 			</div>

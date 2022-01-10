@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection } from 'firebase/firestore/lite';
-import { getStorage, getDownloadURL, ref } from 'firebase/storage';
+import { getFirestore, collection, doc } from 'firebase/firestore/lite';
+import { getStorage, getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,11 +16,12 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Firestore
 const db = getFirestore(firebaseApp);
-export const projectRef = collection(db, 'project');
-export const experienceRef = collection(db, 'experience');
+export const projectRef = id => (id ? doc(db, 'project', id) : collection(db, 'project'));
+export const experienceRef = id => (id ? doc(db, 'experience', id) : collection(db, 'experience'));
 
 // Firebase Storage
 const storage = getStorage(firebaseApp);
 export const storageRef = path => getDownloadURL(ref(storage, path));
+export const uploadRef = (path, file) => uploadBytesResumable(ref(storage, path), file);
 
 export default firebaseApp;

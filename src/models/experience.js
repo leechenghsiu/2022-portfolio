@@ -6,7 +6,7 @@ import { experienceRef } from 'services/firebase';
 import { useRedux } from 'utils/hook/redux';
 
 const fetchExperiences = createAction('FETCH_EXPERIENCES', () => async () => {
-	const querySnapshot = await getDocs(query(experienceRef));
+	const querySnapshot = await getDocs(query(experienceRef()));
 	const result = [];
 	querySnapshot.forEach(doc => result.push({ ...doc.data(), id: doc.id }));
 	return result;

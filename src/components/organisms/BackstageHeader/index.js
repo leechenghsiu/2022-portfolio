@@ -5,7 +5,7 @@ import { useAuth } from 'models/auth';
 
 import { NavButton } from 'components/atoms/Button';
 
-import path from 'constants/path';
+import routePath from 'constants/path';
 
 import { authMethods } from 'services/firebaseAuth';
 
@@ -50,22 +50,31 @@ const BackstageHeader = () => {
 				role="button"
 				tabIndex={0}
 				onKeyPress={() => {}}
-				onClick={() => push(path.backstage)}
+				onClick={() => push(routePath.backstage)}
 			>
 				<h1>Backstage.</h1>
 			</div>
-			{pathname !== path.backstageLogin && (
+			{pathname !== routePath.backstageLogin && (
 				<>
-					<LinkItem to={path.backstage} selected={pathname === path.backstage}>
+					<LinkItem to={routePath.backstage} selected={pathname === routePath.backstage}>
 						Dashboard
 					</LinkItem>
-					<LinkItem to={path.backstageSkill} selected={pathname === path.backstageSkill}>
+					<LinkItem
+						to={routePath.backstageSkill}
+						selected={pathname.includes(routePath.backstageSkill)}
+					>
 						Skill
 					</LinkItem>
-					<LinkItem to={path.backstageProject} selected={pathname === path.backstageProject}>
+					<LinkItem
+						to={routePath.backstageProject}
+						selected={pathname.includes(routePath.backstageProject)}
+					>
 						Project
 					</LinkItem>
-					<LinkItem to={path.backstageExperience} selected={pathname === path.backstageExperience}>
+					<LinkItem
+						to={routePath.backstageExperience}
+						selected={pathname.includes(routePath.backstageExperience)}
+					>
 						Experience
 					</LinkItem>
 					<LinkItem className={styles.logoutButton} onClick={handleLogout}>
