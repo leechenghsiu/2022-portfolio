@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
 
+import { useMedia } from 'utils/hook/useMedia';
+
 import FilledText from 'components/atoms/FilledText';
 
 import styles from './styles.module.scss';
 
 const Skill = ({ hitFlag }) => {
 	const height = use100vh();
+	const media = useMedia();
 	const [active, setActive] = useState(false);
 
 	useEffect(() => {
@@ -18,7 +21,7 @@ const Skill = ({ hitFlag }) => {
 		<div className={styles.wrapper}>
 			<div
 				className={classnames(styles.container, hitFlag === 'skills' && styles.fixed)}
-				style={{ height: 0.7 * height }}
+				style={{ height: media === 'desktop' ? 0.7 * height : 'auto' }}
 			>
 				<div className={styles.content}>
 					<FilledText

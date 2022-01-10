@@ -4,6 +4,7 @@ import { use100vh } from 'react-div-100vh';
 import { useModal } from 'models/modal';
 
 import { useScroll } from 'utils/hook/event';
+import { useMedia } from 'utils/hook/useMedia';
 
 import Intro from 'components/organisms/Intro';
 import Skill from 'components/organisms/Skill';
@@ -16,25 +17,26 @@ import styles from './styles.module.scss';
 export const HomePage = () => {
 	const height = use100vh();
 	const { scrollY } = useScroll();
+	const media = useMedia();
 	const [hitFlag, setHitFlag] = useState('intro');
 	const [{ type }] = useModal();
 
 	useEffect(() => {
 		if (height && type === '') {
-			if (scrollY < height * 0.5) {
-				setHitFlag('intro');
-			}
-			if (scrollY >= height * 0.5) {
-				setHitFlag('skills');
-			}
-			if (scrollY >= height * 1.3) {
-				setHitFlag('project');
-			}
-			if (scrollY >= height * 2.6) {
-				setHitFlag('experience');
+			if (media === 'desktop') {
+				if (scrollY < height * 0.5) setHitFlag('intro');
+				if (scrollY >= height * 0.5) setHitFlag('skills');
+				if (scrollY >= height * 1.3) setHitFlag('project');
+				if (scrollY >= height * 2.6) setHitFlag('experience');
+			} else if (media === 'tablet') {
+				if (scrollY < height * 0.4) setHitFlag('intro');
+				if (scrollY >= height * 0.4) setHitFlag('skills');
+			} else {
+				if (scrollY < height * 0.4) setHitFlag('intro');
+				if (scrollY >= height * 0.4) setHitFlag('skills');
 			}
 		}
-	}, [scrollY]);
+	}, [scrollY, media]);
 
 	return (
 		<div className={styles.homeLayout}>

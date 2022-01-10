@@ -41,10 +41,14 @@ const ExperienceItem = ({
 			{thumbnail && <img src={imageUrl} alt={title} />}
 			<div className={styles.content}>
 				<div className={styles.row}>
-					<p>{`${startAt} - ${endAt}`}</p>
-					<p>{title}</p>
-					<p>{department}</p>
-					<p>{role}</p>
+					<div>
+						<p>{`${startAt} - ${endAt}`}</p>
+					</div>
+					<div>
+						<p>{title}</p>
+						<p>{department}</p>
+						<p>{role}</p>
+					</div>
 				</div>
 				{description && <p className={styles.desc}>{description}</p>}
 			</div>

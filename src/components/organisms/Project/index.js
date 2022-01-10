@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 
+import { useMedia } from 'utils/hook/useMedia';
+
 import { useModal } from 'models/modal';
 import { useProject } from 'models/project';
 
@@ -12,12 +14,13 @@ import ProjectInnerModal from 'components/molecules/ProjectInnerModal';
 import styles from './styles.module.scss';
 
 const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
+	const media = useMedia();
 	const [, { openModal }] = useModal();
 	const [, { setTargetProject }] = useProject();
 
 	const transRef = useSpringRef();
 	const transitions = useTransition(data, {
-		ref: transRef,
+		ref: media === 'desktop' ? transRef : null,
 		trail: 250,
 		from: { opacity: 0, scale: 0.8 },
 		enter: { opacity: 1, scale: 1 },

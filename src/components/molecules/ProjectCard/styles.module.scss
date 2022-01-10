@@ -25,9 +25,16 @@
 		background: linear-gradient(to bottom, #33333300 0%, #33333380 100%);
 	}
 
-	&:hover {
-		box-shadow: 6px 18px 24px 12px #00000010;
-		transform: translate(-6px, -6px);
+	@media screen and (min-width: $media-desktop) {
+		&:hover {
+			box-shadow: 6px 18px 24px 12px #00000010;
+			transform: translate(-6px, -6px);
+		}
+	}
+
+	@media screen and (max-width: $media-tablet) {
+		background-size: cover;
+		padding: 12px;
 	}
 
 	& > h2 {

@@ -15,6 +15,10 @@
 			left: 40px;
 		}
 
+		@media screen and (max-width: $media-tablet) {
+			top: calc(100% - 88px - 10%);
+		}
+
 		& .sectionTitle {
 			font-family: 'Montserrat', sans-serif;
 			font-size: 20px;

@@ -6,4 +6,9 @@
 	flex-direction: column;
 	margin-top: 106px;
 	min-height: calc(100vh - 106px);
+
+	@media screen and (max-width: $media-phone) {
+		margin-top: 88px;
+		min-height: 0;
+	}
 }

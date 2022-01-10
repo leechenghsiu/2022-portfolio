@@ -9,12 +9,30 @@
 	background-color: #f1efef;
 	padding: 80px 0 160px;
 
+	@media screen and (max-width: $media-tablet) {
+		padding: 64px 0 80px;
+	}
+
 	& .container {
 		width: 100%;
 		max-width: 1280px;
 
+		@media screen and (max-width: $media-desktop) {
+			margin-left: 40px;
+			margin-right: 40px;
+		}
+
+		@media screen and (max-width: $media-tablet) {
+			margin-left: 24px;
+			margin-right: 24px;
+		}
+
 		& .sectionTitle {
 			margin-bottom: 32px;
+
+			@media screen and (max-width: $media-tablet) {
+				margin-bottom: 24px;
+			}
 		}
 
 		& .experience {
@@ -25,8 +43,15 @@
 			border: 1px solid #f1efef;
 			transition: border 0.3s;
 
-			&:hover {
-				border: 1px solid $primary-gray;
+			@media screen and (min-width: $media-desktop) {
+				&:hover {
+					border: 1px solid $primary-gray;
+				}
+			}
+
+			@media screen and (max-width: $media-tablet) {
+				padding: 16px 24px;
+				margin-bottom: 24px;
 			}
 
 			&.last {
@@ -38,16 +63,16 @@
 				font-weight: 600;
 				margin-bottom: 24px;
 				text-decoration: underline;
+
+				@media screen and (max-width: $media-tablet) {
+					margin-bottom: 16px;
+				}
 			}
 
 			& .content {
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 24px;
-
-				@media screen and (max-width: $media-tablet) {
-					grid-template-columns: 1fr;
-				}
 			}
 		}
 	}

@@ -8,6 +8,10 @@
 	width: 100%;
 	margin-bottom: 120px;
 
+	@media screen and (max-width: $media-tablet) {
+		margin-bottom: 80px;
+	}
+
 	& .container {
 		width: 100%;
 		max-width: 1280px;
@@ -24,8 +28,18 @@
 				margin-right: 40px;
 			}
 
+			@media screen and (max-width: $media-tablet) {
+				margin-left: 24px;
+				margin-right: 24px;
+				margin-bottom: 80px;
+			}
+
 			& .sectionTitle {
 				margin-bottom: 32px;
+
+				@media screen and (max-width: $media-tablet) {
+					margin-bottom: 24px;
+				}
 			}
 
 			& .content {
@@ -35,6 +49,7 @@
 
 				@media screen and (max-width: $media-tablet) {
 					grid-template-columns: 1fr;
+					gap: 24px;
 				}
 			}
 		}

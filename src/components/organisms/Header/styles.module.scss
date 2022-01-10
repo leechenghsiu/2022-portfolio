@@ -13,6 +13,10 @@
 	transition: top 1s, box-shadow 0.3s;
 	background-color: white;
 
+	@media screen and (max-width: $media-phone) {
+		height: 88px;
+	}
+
 	&.shadow {
 		box-shadow: 0 0 8px 0 rgba(51, 51, 51, 0.2);
 	}
@@ -33,9 +37,19 @@
 			padding: 0 40px;
 		}
 
+		@media screen and (max-width: $media-phone) {
+			max-width: none;
+			padding: 0 24px;
+		}
+
 		& > svg {
 			cursor: pointer;
 			transition: transform 0.3s;
+
+			@media screen and (max-width: $media-phone) {
+				width: 40px;
+				height: 40px;
+			}
 
 			&:hover {
 				transform: scale(0.9);

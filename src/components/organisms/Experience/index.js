@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 import dayjs from 'dayjs';
 
+import { useMedia } from 'utils/hook/useMedia';
+
 import { useExperience } from 'models/experience';
 
 import SectionTitle from 'components/atoms/SectionTitle';
@@ -11,9 +13,10 @@ import ExperienceItem from 'components/molecules/ExperienceItem';
 import styles from './styles.module.scss';
 
 const Section = ({ start, data, sectionTitle, last = false }) => {
+	const media = useMedia();
 	const transRef = useSpringRef();
 	const transitions = useTransition(data, {
-		ref: transRef,
+		ref: media === 'desktop' ? transRef : null,
 		trail: 250,
 		from: { opacity: 0 },
 		enter: { opacity: 1 },

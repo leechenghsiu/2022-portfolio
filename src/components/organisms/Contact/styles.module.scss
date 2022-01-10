@@ -14,6 +14,13 @@
 		justify-content: space-between;
 		width: 100%;
 		max-width: 1280px;
+		margin-left: 40px;
+		margin-right: 40px;
+
+		@media screen and (max-width: $media-tablet) {
+			flex-direction: column;
+			max-width: none;
+		}
 
 		& .contactWrapper {
 			display: flex;
@@ -25,6 +32,10 @@
 				color: $background;
 				font-weight: 600;
 				margin-right: 32px;
+
+				@media screen and (max-width: $media-tablet) {
+					margin-right: 16px;
+				}
 			}
 
 			& > a {
@@ -34,6 +45,10 @@
 				color: $background;
 				margin-right: 32px;
 
+				@media screen and (max-width: $media-tablet) {
+					margin-right: 16px;
+				}
+
 				& > svg {
 					margin-right: 4px;
 				}
@@ -41,6 +56,10 @@
 				& > span {
 					font-family: 'Noto Sans TC', sans-serif;
 					color: $background;
+
+					@media screen and (max-width: $media-tablet) {
+						display: none;
+					}
 				}
 			}
 		}
@@ -48,6 +67,11 @@
 		& .copyright {
 			display: flex;
 			align-items: center;
+
+			@media screen and (max-width: $media-tablet) {
+				justify-content: center;
+				margin-top: 16px;
+			}
 
 			& > a {
 				font-family: 'Montserrat', sans-serif;
