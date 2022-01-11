@@ -46,7 +46,7 @@ const ExperienceItem = ({
 					</div>
 					<div>
 						<p>{title}</p>
-						<p>{department}</p>
+						{department && <p>{department}</p>}
 						<p>{role}</p>
 					</div>
 				</div>

@@ -8,6 +8,7 @@
 		width: 48px;
 		height: 48px;
 		margin-right: 16px;
+		object-fit: contain;
 
 		@media screen and (max-width: $media-tablet) {
 			width: 36px;
@@ -66,21 +67,11 @@
 							margin-right: 12px;
 						}
 
-						&:nth-child(3) {
+						&:last-child {
 							font-family: 'Noto Sans TC', sans-serif;
 							color: $black-grey;
 							font-weight: 400;
 						}
-					}
-				}
-
-				&:nth-child(3) {
-					& > p {
-						font-size: 16px;
-						line-height: 16px;
-						font-family: 'Noto Sans TC', sans-serif;
-						color: $black-grey;
-						font-weight: 400;
 					}
 				}
 			}
