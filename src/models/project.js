@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { query, getDocs, getDoc, updateDoc, addDoc } from 'firebase/firestore/lite';
+import { query, getDocs, getDoc, updateDoc, addDoc, deleteDoc } from 'firebase/firestore/lite';
 
 import { projectDocRef, projectCollectionRef } from 'services/firebase';
 
@@ -27,6 +27,11 @@ const updateProject = createAction('UPDATE_PROJECT', (id, data, cb) => async () 
 const createProject = createAction('CREATE_PROJECT', (data, cb) => async () => {
 	await addDoc(projectCollectionRef(), data);
 	if (cb) cb();
+});
+
+const deleteProject = createAction('DELETE_PROJECT', id => async dispatch => {
+	await deleteDoc(projectDocRef(id));
+	dispatch(fetchProjects());
 });
 
 export const defaultTargetProjectData = {
@@ -88,6 +93,7 @@ export const useProject = () =>
 		setTargetProject,
 		updateProject,
 		createProject,
+		deleteProject,
 	});
 
 export default { reducer };
