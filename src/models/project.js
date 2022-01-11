@@ -1,26 +1,31 @@
 import { createAction, handleActions } from 'redux-actions';
-import { query, getDocs, getDoc, updateDoc } from 'firebase/firestore/lite';
+import { query, getDocs, getDoc, updateDoc, addDoc } from 'firebase/firestore/lite';
 
-import { projectRef } from 'services/firebase';
+import { projectDocRef, projectCollectionRef } from 'services/firebase';
 
 import { useRedux } from 'utils/hook/redux';
 
 const fetchProjects = createAction('FETCH_PROJECTS', () => async () => {
-	const querySnapshot = await getDocs(query(projectRef()));
+	const querySnapshot = await getDocs(query(projectCollectionRef()));
 	const result = [];
 	querySnapshot.forEach(doc => result.push({ ...doc.data(), id: doc.id }));
 	return result;
 });
 
 const fetchTargetProject = createAction('FETCH_TARGET_PROJECT', id => async () => {
-	const querySnapshot = await getDoc(query(projectRef(id)));
+	const querySnapshot = await getDoc(query(projectDocRef(id)));
 	return { ...querySnapshot.data(), id: querySnapshot.id };
 });
 
 const setTargetProject = createAction('SET_TARGET_PROJECT', data => data);
 
 const updateProject = createAction('UPDATE_PROJECT', (id, data, cb) => async () => {
-	await updateDoc(projectRef(id), data);
+	await updateDoc(projectDocRef(id), data);
+	if (cb) cb();
+});
+
+const createProject = createAction('CREATE_PROJECT', (data, cb) => async () => {
+	await addDoc(projectCollectionRef(), data);
 	if (cb) cb();
 });
 
@@ -60,6 +65,12 @@ const reducer = {
 
 				targetProject: defaultTargetProjectData,
 			}),
+
+			CREATE_PROJECT_FULFILLED: state => ({
+				...state,
+
+				targetProject: defaultTargetProjectData,
+			}),
 		},
 		{
 			projectList: [],
@@ -76,6 +87,7 @@ export const useProject = () =>
 		fetchTargetProject,
 		setTargetProject,
 		updateProject,
+		createProject,
 	});
 
 export default { reducer };

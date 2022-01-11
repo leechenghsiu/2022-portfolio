@@ -24,7 +24,7 @@ import styles from './styles.module.scss';
 const BackstageProjectInner = ({ edit = false }) => {
 	const { id } = useParams();
 	const { push } = useHistory();
-	const [{ targetProject }, { fetchTargetProject, updateProject }] = useProject();
+	const [{ targetProject }, { fetchTargetProject, updateProject, createProject }] = useProject();
 	const [form, setForm] = useState(targetProject);
 	const [tagInput, setTagInput] = useState('');
 	const [thumbnailProgress, setThumbnailProgress] = useState(0);
@@ -85,7 +85,11 @@ const BackstageProjectInner = ({ edit = false }) => {
 		}
 	};
 	const onSubmit = () => {
-		updateProject(form.id, _.omit(form, ['id']), () => push(routePath.backstageProject));
+		if (edit) {
+			updateProject(form.id, _.omit(form, ['id']), () => push(routePath.backstageProject));
+		} else {
+			createProject(_.omit(form, ['id']), () => push(routePath.backstageProject));
+		}
 	};
 
 	return (
@@ -106,6 +110,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 					<InputLabel id="type">Type</InputLabel>
 					<Select
 						labelId="type"
+						name="type"
 						id="type-select"
 						value={form.type}
 						onChange={onChange}

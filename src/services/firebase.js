@@ -16,8 +16,10 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Firestore
 const db = getFirestore(firebaseApp);
-export const projectRef = id => (id ? doc(db, 'project', id) : collection(db, 'project'));
-export const experienceRef = id => (id ? doc(db, 'experience', id) : collection(db, 'experience'));
+export const projectDocRef = id => (id ? doc(db, 'project', id) : doc(db, 'project'));
+export const projectCollectionRef = () => collection(db, 'project');
+export const experienceDocRef = id => (id ? doc(db, 'experience', id) : doc(db, 'experience'));
+export const experienceCollectionRef = () => collection(db, 'experience');
 
 // Firebase Storage
 const storage = getStorage(firebaseApp);
