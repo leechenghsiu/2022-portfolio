@@ -165,7 +165,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 					>
 						Original Thumbnail
 					</a>
-					<Button className={styles.uploadButton} size="medium">
+					<Button className={styles.uploadButton} size="large">
 						<label className={styles.file} htmlFor="thumbnail">
 							Upload Thumbnail
 							<input type="file" id="thumbnail" onChange={e => onUploadFile(e, 'thumbnail')} />
@@ -182,7 +182,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 					<a className={styles.link} href={form.video} target="_blank" rel="noreferrer" alt="video">
 						Original Video
 					</a>
-					<Button className={styles.uploadButton} size="medium">
+					<Button className={styles.uploadButton} size="large">
 						<label className={styles.file} htmlFor="video">
 							Upload Video
 							<input type="file" id="video" onChange={e => onUploadFile(e, 'video')} />
@@ -199,12 +199,12 @@ const BackstageProjectInner = ({ edit = false }) => {
 				<Button
 					className={styles.uploadButton}
 					variant="text"
-					size="medium"
+					size="large"
 					onClick={() => push(routePath.backstageProject)}
 				>
 					Cancel
 				</Button>
-				<Button className={styles.uploadButton} variant="normal" size="medium" onClick={onSubmit}>
+				<Button className={styles.uploadButton} variant="normal" size="large" onClick={onSubmit}>
 					Submit
 				</Button>
 			</div>

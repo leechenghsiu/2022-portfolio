@@ -7,6 +7,9 @@ const useStyles = makeStyles({
 		'&.MuiDataGrid-root .MuiDataGrid-cell:focus': {
 			outline: 'none',
 		},
+		'&.MuiDataGrid-root .MuiDataGrid-cell:focus-within': {
+			outline: 'none',
+		},
 		'&.MuiDataGrid-root .MuiDataGrid-columnHeaderDraggableContainer:focus': {
 			outline: 'none',
 		},
