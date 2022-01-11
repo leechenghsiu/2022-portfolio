@@ -6,4 +6,5 @@ export default {
 	backstageProject: '/backstage/project',
 	backstageProjectCreate: '/backstage/project/new',
 	backstageExperience: '/backstage/experience',
+	backstageExperienceCreate: '/backstage/experience/new',
 };

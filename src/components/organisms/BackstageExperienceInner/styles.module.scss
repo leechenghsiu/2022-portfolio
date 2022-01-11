@@ -14,16 +14,6 @@
 		border-radius: 4px;
 		padding: 24px;
 
-		& .chipList {
-			display: flex;
-			align-items: flex-end;
-			padding-top: 24px;
-
-			& > div {
-				margin-right: 12px;
-			}
-		}
-
 		& .link {
 			cursor: pointer;
 			margin-bottom: 4px;

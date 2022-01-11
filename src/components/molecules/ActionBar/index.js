@@ -3,8 +3,6 @@ import { makeStyles } from '@mui/styles';
 import TextField from '@mui/material/TextField';
 import { useHistory } from 'react-router-dom';
 
-import routePath from 'constants/path';
-
 import Button from 'components/atoms/Button';
 
 import styles from './styles.module.scss';
@@ -32,7 +30,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const ActionBar = ({ value, onChange }) => {
+const ActionBar = ({ value, onChange, createRoute }) => {
 	const classes = useStyles();
 	const { push } = useHistory();
 
@@ -48,11 +46,7 @@ const ActionBar = ({ value, onChange }) => {
 					type: 'search',
 				}}
 			/>
-			<Button
-				className={styles.button}
-				size="large"
-				onClick={() => push(routePath.backstageProjectCreate)}
-			>
+			<Button className={styles.button} size="large" onClick={() => push(createRoute)}>
 				Add New
 			</Button>
 		</div>

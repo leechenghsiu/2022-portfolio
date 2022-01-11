@@ -10,7 +10,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Chip from '@mui/material/Chip';
 import _ from 'lodash';
 
-import { useProject } from 'models/project';
+import { useProject, defaultTargetProjectData } from 'models/project';
 
 import { uploadRef } from 'services/firebase';
 
@@ -24,7 +24,10 @@ import styles from './styles.module.scss';
 const BackstageProjectInner = ({ edit = false }) => {
 	const { id } = useParams();
 	const { push } = useHistory();
-	const [{ targetProject }, { fetchTargetProject, updateProject, createProject }] = useProject();
+	const [
+		{ targetProject },
+		{ fetchTargetProject, updateProject, createProject, setTargetProject },
+	] = useProject();
 	const [form, setForm] = useState(targetProject);
 	const [tagInput, setTagInput] = useState('');
 	const [thumbnailProgress, setThumbnailProgress] = useState(0);
@@ -33,6 +36,8 @@ const BackstageProjectInner = ({ edit = false }) => {
 	useEffect(() => {
 		if (edit) {
 			fetchTargetProject(id);
+		} else {
+			setTargetProject(defaultTargetProjectData);
 		}
 	}, []);
 
@@ -97,16 +102,6 @@ const BackstageProjectInner = ({ edit = false }) => {
 			<BackstageSectionTitle title="Projects Edit" />
 			<div className={styles.content}>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
-					<TextField
-						label="Title"
-						name="title"
-						variant="standard"
-						value={form.title}
-						onChange={onChange}
-					/>
-					<FormHelperText>Please enter project name</FormHelperText>
-				</FormControl>
-				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<InputLabel id="type">Type</InputLabel>
 					<Select
 						labelId="type"
@@ -121,6 +116,16 @@ const BackstageProjectInner = ({ edit = false }) => {
 						<MenuItem value="side">Side</MenuItem>
 					</Select>
 					<FormHelperText>Please select one of a project type</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Title"
+						name="title"
+						variant="standard"
+						value={form.title}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter project name</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<InputLabel shrink>Tag</InputLabel>
@@ -154,17 +159,19 @@ const BackstageProjectInner = ({ edit = false }) => {
 						Please enter sorting weight, prioritized by smaller number
 					</FormHelperText>
 				</FormControl>
-				<FormControl variant="standard" sx={{ mb: 3 }}>
+				<FormControl variant="standard" sx={{ mb: 3, pt: 2 }}>
 					<InputLabel shrink>Thumbnail</InputLabel>
-					<a
-						className={styles.link}
-						href={form.thumbnail}
-						target="_blank"
-						rel="noreferrer"
-						alt="thumbnail"
-					>
-						Original Thumbnail
-					</a>
+					{targetProject.thumbnail && (
+						<a
+							className={styles.link}
+							href={targetProject.thumbnail}
+							target="_blank"
+							rel="noreferrer"
+							alt="thumbnail"
+						>
+							Original Thumbnail
+						</a>
+					)}
 					<Button className={styles.uploadButton} size="large">
 						<label className={styles.file} htmlFor="thumbnail">
 							Upload Thumbnail
@@ -173,15 +180,35 @@ const BackstageProjectInner = ({ edit = false }) => {
 					</Button>
 					{thumbnailProgress > 0 && (
 						<FormHelperText>
-							{`${thumbnailProgress === 100 ? 'Uploaded' : 'Uploading'}...${thumbnailProgress}%`}
+							{thumbnailProgress === 100 ? (
+								<a
+									className={styles.link}
+									href={form.thumbnail}
+									target="_blank"
+									rel="noreferrer"
+									alt="uploaded-thumbnail"
+								>
+									{`Uploaded...${thumbnailProgress}%, click to preview!`}
+								</a>
+							) : (
+								`Uploading...${thumbnailProgress}%`
+							)}
 						</FormHelperText>
 					)}
 				</FormControl>
-				<FormControl variant="standard" sx={{ mb: 3 }}>
+				<FormControl variant="standard" sx={{ mb: 3, pt: 2 }}>
 					<InputLabel shrink>Video</InputLabel>
-					<a className={styles.link} href={form.video} target="_blank" rel="noreferrer" alt="video">
-						Original Video
-					</a>
+					{targetProject.video && (
+						<a
+							className={styles.link}
+							href={targetProject.video}
+							target="_blank"
+							rel="noreferrer"
+							alt="original-video"
+						>
+							Original Video
+						</a>
+					)}
 					<Button className={styles.uploadButton} size="large">
 						<label className={styles.file} htmlFor="video">
 							Upload Video
@@ -191,6 +218,23 @@ const BackstageProjectInner = ({ edit = false }) => {
 					{videoProgress > 0 && (
 						<FormHelperText>
 							{`${videoProgress === 100 ? 'Uploaded' : 'Uploading'}...${videoProgress}%`}
+						</FormHelperText>
+					)}
+					{videoProgress > 0 && (
+						<FormHelperText>
+							{videoProgress === 100 ? (
+								<a
+									className={styles.link}
+									href={form.video}
+									target="_blank"
+									rel="noreferrer"
+									alt="uploaded-video"
+								>
+									{`Uploaded...${videoProgress}%, click to preview!`}
+								</a>
+							) : (
+								`Uploading...${videoProgress}%`
+							)}
 						</FormHelperText>
 					)}
 				</FormControl>

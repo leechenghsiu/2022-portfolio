@@ -15,7 +15,11 @@ import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
 import { SkillPage } from 'layouts/BackStage/Skill';
 import { ProjectPage, ProjectCreatePage, ProjectEditPage } from 'layouts/BackStage/Project';
-import { ExperiencePage } from 'layouts/BackStage/Experience';
+import {
+	ExperiencePage,
+	ExperienceCreatePage,
+	ExperienceEditPage,
+} from 'layouts/BackStage/Experience';
 
 const Routes = props => (
 	<HashRouter>
@@ -45,6 +49,18 @@ const Routes = props => (
 					exact
 					path={routePath.backstageExperience}
 					component={ExperiencePage}
+					{...props}
+				/>
+				<AuthRoute
+					exact
+					path={routePath.backstageExperienceCreate}
+					component={ExperienceCreatePage}
+					{...props}
+				/>
+				<AuthRoute
+					exact
+					path={`${routePath.backstageExperience}/:id`}
+					component={ExperienceEditPage}
 					{...props}
 				/>
 			</Switch>

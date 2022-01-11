@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutline } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
-import { useProject } from 'models/project';
+import { useExperience } from 'models/experience';
 
 import routePath from 'constants/path';
 
@@ -14,27 +14,25 @@ import ActionBar from 'components/molecules/ActionBar';
 
 import styles from './styles.module.scss';
 
-const typeMap = { student: 'Student Project', work: 'Work Project', side: 'Side Project' };
+const typeMap = { education: 'Education', job: 'Job', activity: 'Activity' };
 
-const BackstageProject = () => {
+const BackstageExperience = () => {
 	const { push } = useHistory();
 	const [search, setSearch] = useState('');
-	const [{ projectList }, { fetchProjects, deleteProject }] = useProject();
-	const filteredProjectList = useMemo(() => {
+	const [{ experienceList }, { fetchExperiences, deleteExperience }] = useExperience();
+	const filteredExperienceList = useMemo(() => {
 		if (search !== '') {
-			return projectList.filter(({ title }) => title.toLowerCase().includes(search.toLowerCase()));
+			return experienceList.filter(({ title }) =>
+				title.toLowerCase().includes(search.toLowerCase()),
+			);
 		}
-		return projectList;
-	}, [search, projectList]);
+		return experienceList;
+	}, [search, experienceList]);
 	const columns = [
 		{ field: 'title', headerName: 'Title', flex: 1 },
+		{ field: 'department', headerName: 'Department', flex: 1 },
+		{ field: 'role', headerName: 'Role', flex: 1 },
 		{ field: 'type', headerName: 'Type', flex: 1, valueFormatter: ({ value }) => typeMap[value] },
-		{
-			field: 'tag',
-			headerName: 'Tag',
-			flex: 1,
-			valueFormatter: ({ value }) => value.map(_tag => ` ${_tag}`),
-		},
 		{
 			field: 'id',
 			headerName: 'Actions',
@@ -42,12 +40,12 @@ const BackstageProject = () => {
 			renderCell: ({ value }) => (
 				<>
 					<Tooltip title="Edit">
-						<IconButton onClick={() => push(`${routePath.backstageProject}/${value}`)}>
+						<IconButton onClick={() => push(`${routePath.backstageExperience}/${value}`)}>
 							<EditOutlined color="action" />
 						</IconButton>
 					</Tooltip>
 					<Tooltip title="Delete">
-						<IconButton onClick={() => deleteProject(value)}>
+						<IconButton onClick={() => deleteExperience(value)}>
 							<DeleteOutline color="action" />
 						</IconButton>
 					</Tooltip>
@@ -57,20 +55,20 @@ const BackstageProject = () => {
 	];
 
 	useEffect(() => {
-		fetchProjects();
+		fetchExperiences();
 	}, []);
 
 	return (
 		<div className={styles.wrapper}>
-			<BackstageSectionTitle title="Projects" />
+			<BackstageSectionTitle title="Experiences" />
 			<ActionBar
 				value={search}
 				onChange={setSearch}
-				createRoute={routePath.backstageProjectCreate}
+				createRoute={routePath.backstageExperienceCreate}
 			/>
-			<DataGrid rows={filteredProjectList} columns={columns} />
+			<DataGrid rows={filteredExperienceList} columns={columns} />
 		</div>
 	);
 };
 
-export default BackstageProject;
+export default BackstageExperience;
