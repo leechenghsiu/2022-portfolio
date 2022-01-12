@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, GitHub, LinkedIn } from '@mui/icons-material';
+import { NavLink } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
@@ -30,9 +31,9 @@ const Contact = () => (
 				</a>
 			</div>
 			<div className={styles.copyright}>
-				<a target="_blank" rel="noreferrer" href={`${window.location.href}backstage`}>
+				<NavLink target="_blank" to="/backstage">
 					Matthew Lee,&nbsp;&nbsp;2022
-				</a>
+				</NavLink>
 			</div>
 		</div>
 	</div>

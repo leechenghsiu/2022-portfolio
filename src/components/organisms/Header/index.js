@@ -24,7 +24,9 @@ const Header = ({ className, open }) => {
 			)}
 		>
 			<nav className={styles.container}>
-				<Logo />
+				<NavLink to="/">
+					<Logo />
+				</NavLink>
 				<ul>
 					<li>
 						<NavLink to="/#skills">SKILLS</NavLink>

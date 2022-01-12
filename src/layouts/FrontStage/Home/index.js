@@ -20,6 +20,7 @@ import styles from './styles.module.scss';
 
 export const HomePage = () => {
 	const { hash } = useLocation();
+	const refTop = useRef(null);
 	const refSkill = useRef(null);
 	const refProject = useRef(null);
 	const refExperience = useRef(null);
@@ -53,6 +54,11 @@ export const HomePage = () => {
 	}, [mouseHint]);
 
 	useEffect(() => {
+		if (refTop !== null && hash === '') {
+			setTimeout(() => {
+				scrollToRef(refTop, 0);
+			}, 500);
+		}
 		if (refSkill !== null && hash === '#skills') {
 			setTimeout(() => {
 				scrollToRef(refSkill, -80);
@@ -72,6 +78,7 @@ export const HomePage = () => {
 
 	return (
 		<div
+			ref={refTop}
 			className={styles.homeLayout}
 			onScroll={() => setMouseHint(false)}
 			onWheel={() => setMouseHint(false)}
