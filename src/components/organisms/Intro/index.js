@@ -9,8 +9,8 @@ const Intro = ({ hitFlag }) => (
 	<div className={styles.wrapper}>
 		<div className={classnames(styles.intro, hitFlag === 'intro' && styles.fixed)}>
 			<SectionTitle className={styles.sectionTitle} title="Matthew Lee">
-				<p>With great passion in front-end develop, also, UI/UX design is interested in.</p>
-				<p>Currently, I&apos;m continuously learning more techniques of front-end development.</p>
+				<p>With a great passion for front-end development, and interested in UI/UX design.</p>
+				<p>Currently, still learning more techniques of front-end development.</p>
 			</SectionTitle>
 		</div>
 	</div>

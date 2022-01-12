@@ -71,7 +71,7 @@ const Project = ({ hitFlag }, ref) => {
 						.filter(({ type: projectType }) => projectType === 'student')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Student Projects"
-					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
+					subTitle="Results from the last year of college, working with schoolmates all over the year."
 				/>
 				<Section
 					start={hitFlag === 'project'}
@@ -79,7 +79,7 @@ const Project = ({ hitFlag }, ref) => {
 						.filter(({ type: projectType }) => projectType === 'work')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Work Projects"
-					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
+					subTitle="Collaborate with multiple companies, adopting AGILE development method throughout the process."
 				/>
 				<Section
 					last
@@ -88,7 +88,7 @@ const Project = ({ hitFlag }, ref) => {
 						.filter(({ type: projectType }) => projectType === 'side')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle="Side Projects"
-					subTitle="UX/UI designer who loves her job and helps design industry development in Kazakhstan"
+					subTitle="Working on piecework basis during spare time after work."
 				/>
 			</div>
 			<ProjectInnerModal />

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useScroll } from 'utils/hook/event';
 
 import { ReactComponent as Logo } from 'images/logo/logo.svg';
-import { ReactComponent as Language } from 'images/icon/language.svg';
+// import { ReactComponent as Language } from 'images/icon/language.svg';
 
 import styles from './styles.module.scss';
 
@@ -37,11 +37,11 @@ const Header = ({ className, open }) => {
 					<li>
 						<NavLink to="/#experiences">EXPERIENCES</NavLink>
 					</li>
-					<li>
+					{/* <li>
 						<button type="button" onClick={() => {}}>
 							<Language />
 						</button>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</header>

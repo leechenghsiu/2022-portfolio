@@ -62,9 +62,7 @@ const Experience = ({ hitFlag }, ref) => {
 		<div ref={ref} className={styles.wrapper}>
 			<div className={styles.container}>
 				<SectionTitle className={styles.sectionTitle} title="Experiences">
-					<p>
-						UX/UI designer who loves her job and helps design industry development in Kazakhstan
-					</p>
+					<p>Try new things at every stage, and learn things from each.</p>
 				</SectionTitle>
 				<Section
 					start={hitFlag === 'experience'}
