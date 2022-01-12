@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 
-import { useMedia } from 'utils/hook/useMedia';
-
 import { storageRef } from 'services/firebase';
 
 import styles from './styles.module.scss';
@@ -17,7 +15,6 @@ const ExperienceItem = ({
 	endAt = '',
 	description = '',
 }) => {
-	const media = useMedia();
 	const [imageUrl, setImageUrl] = useState('');
 
 	async function getImageUrl() {
@@ -49,7 +46,7 @@ const ExperienceItem = ({
 					</div>
 					<div>
 						<p>{title}</p>
-						{department && media !== 'phone' && <p>{department}</p>}
+						{department && <p>{department}</p>}
 						<p>{role}</p>
 					</div>
 				</div>
