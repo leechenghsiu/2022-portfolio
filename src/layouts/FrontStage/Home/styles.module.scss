@@ -6,9 +6,30 @@
 	flex-direction: column;
 	margin-top: 106px;
 	min-height: calc(100vh - 106px);
+	overflow-y: scroll;
 
 	@media screen and (max-width: $media-phone) {
 		margin-top: 88px;
 		min-height: 0;
+	}
+
+	& .mouse {
+		position: fixed;
+		bottom: 32px;
+		right: 48px;
+		z-index: 1000;
+		transition: all 0.3s;
+		visibility: hidden;
+		opacity: 0;
+
+		@media screen and (max-width: $media-phone) {
+			bottom: 24px;
+			right: 24px;
+		}
+
+		&.show {
+			visibility: visible;
+			opacity: 1;
+		}
 	}
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
 
 import { useModal } from 'models/modal';
@@ -6,6 +7,7 @@ import { useModal } from 'models/modal';
 import { useScroll } from 'utils/hook/event';
 import { useMedia } from 'utils/hook/useMedia';
 
+import Mouse from 'components/atoms/Mouse';
 import Intro from 'components/organisms/Intro';
 import Skill from 'components/organisms/Skill';
 import Project from 'components/organisms/Project';
@@ -19,6 +21,7 @@ export const HomePage = () => {
 	const { scrollY } = useScroll();
 	const media = useMedia();
 	const [hitFlag, setHitFlag] = useState('intro');
+	const [mouseHint, setMouseHint] = useState(true);
 	const [{ type }] = useModal();
 
 	useEffect(() => {
@@ -38,8 +41,21 @@ export const HomePage = () => {
 		}
 	}, [scrollY, media]);
 
+	useEffect(() => {
+		if (!mouseHint) {
+			setTimeout(() => {
+				setMouseHint(true);
+			}, 2000);
+		}
+	}, [mouseHint]);
+
 	return (
-		<div className={styles.homeLayout}>
+		<div
+			className={styles.homeLayout}
+			onScroll={() => setMouseHint(false)}
+			onWheel={() => setMouseHint(false)}
+		>
+			<Mouse className={classnames(styles.mouse, mouseHint && styles.show)} />
 			<Intro hitFlag={hitFlag} />
 			<Skill hitFlag={hitFlag} />
 			<Project hitFlag={hitFlag} />
