@@ -5,12 +5,13 @@ import firebaseApp from './firebase';
 export const auth = getAuth(firebaseApp);
 
 export const authMethods = {
-	signIn: async ({ email, password }) => {
+	signIn: async ({ email, password }, cb) => {
 		try {
 			await signInWithEmailAndPassword(auth, email, password)
 				.then(userCredential => {
 					const { user } = userCredential;
 					console.log('login success', user);
+					if (cb) cb();
 				})
 				.catch(error => {
 					console.error(error);
