@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
+import { useLocation } from 'react-router-dom';
 
 import { useModal } from 'models/modal';
 
+import { scrollToRef } from 'utils/helper';
 import { useScroll } from 'utils/hook/event';
 import { useMedia } from 'utils/hook/useMedia';
 
@@ -17,6 +19,10 @@ import Contact from 'components/organisms/Contact';
 import styles from './styles.module.scss';
 
 export const HomePage = () => {
+	const { hash } = useLocation();
+	const refSkill = useRef(null);
+	const refProject = useRef(null);
+	const refExperience = useRef(null);
 	const height = use100vh();
 	const { scrollY } = useScroll();
 	const media = useMedia();
@@ -49,6 +55,24 @@ export const HomePage = () => {
 		}
 	}, [mouseHint]);
 
+	useEffect(() => {
+		if (refSkill !== null && hash === '#skills') {
+			setTimeout(() => {
+				scrollToRef(refSkill, -80);
+			}, 500);
+		}
+		if (refProject !== null && hash === '#projects') {
+			setTimeout(() => {
+				scrollToRef(refProject, -80);
+			}, 500);
+		}
+		if (refExperience !== null && hash === '#experiences') {
+			setTimeout(() => {
+				scrollToRef(refExperience, -80);
+			}, 500);
+		}
+	}, [hash, refSkill, refProject, refExperience]);
+
 	return (
 		<div
 			className={styles.homeLayout}
@@ -57,9 +81,9 @@ export const HomePage = () => {
 		>
 			<Mouse className={classnames(styles.mouse, mouseHint && styles.show)} />
 			<Intro hitFlag={hitFlag} />
-			<Skill hitFlag={hitFlag} />
-			<Project hitFlag={hitFlag} />
-			<Experience hitFlag={hitFlag} />
+			<Skill hitFlag={hitFlag} ref={refSkill} />
+			<Project hitFlag={hitFlag} ref={refProject} />
+			<Experience hitFlag={hitFlag} ref={refExperience} />
 			<Contact />
 		</div>
 	);

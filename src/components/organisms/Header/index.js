@@ -36,9 +36,6 @@ const Header = ({ className, open }) => {
 						<NavLink to="/#experiences">EXPERIENCES</NavLink>
 					</li>
 					<li>
-						<NavLink to="/#contact">CONTACT</NavLink>
-					</li>
-					<li>
 						<button type="button" onClick={() => {}}>
 							<Language />
 						</button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
 
@@ -8,7 +8,7 @@ import FilledText from 'components/atoms/FilledText';
 
 import styles from './styles.module.scss';
 
-const Skill = ({ hitFlag }) => {
+const Skill = ({ hitFlag }, ref) => {
 	const height = use100vh();
 	const media = useMedia();
 	const [active, setActive] = useState(false);
@@ -18,7 +18,7 @@ const Skill = ({ hitFlag }) => {
 	}, [hitFlag]);
 
 	return (
-		<div className={styles.wrapper}>
+		<div ref={ref} className={styles.wrapper}>
 			<div
 				className={classnames(styles.container, hitFlag === 'skills' && styles.fixed)}
 				style={{ height: media === 'desktop' ? 0.7 * height : 'auto' }}
@@ -78,4 +78,4 @@ const Skill = ({ hitFlag }) => {
 	);
 };
 
-export default Skill;
+export default forwardRef(Skill);

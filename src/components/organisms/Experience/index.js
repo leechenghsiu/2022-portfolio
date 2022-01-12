@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, forwardRef } from 'react';
 import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 import dayjs from 'dayjs';
@@ -51,7 +51,7 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 	);
 };
 
-const Experience = ({ hitFlag }) => {
+const Experience = ({ hitFlag }, ref) => {
 	const [{ experienceList }, { fetchExperiences }] = useExperience();
 
 	useEffect(() => {
@@ -59,7 +59,7 @@ const Experience = ({ hitFlag }) => {
 	}, []);
 
 	return (
-		<div className={styles.wrapper}>
+		<div ref={ref} className={styles.wrapper}>
 			<div className={styles.container}>
 				<SectionTitle className={styles.sectionTitle} title="Experiences">
 					<p>
@@ -93,4 +93,4 @@ const Experience = ({ hitFlag }) => {
 	);
 };
 
-export default Experience;
+export default forwardRef(Experience);

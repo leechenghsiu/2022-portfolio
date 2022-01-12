@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, forwardRef } from 'react';
 import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 
@@ -55,7 +55,7 @@ const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 	);
 };
 
-const Project = ({ hitFlag }) => {
+const Project = ({ hitFlag }, ref) => {
 	const [{ projectList }, { fetchProjects }] = useProject();
 
 	useEffect(() => {
@@ -63,7 +63,7 @@ const Project = ({ hitFlag }) => {
 	}, []);
 
 	return (
-		<div className={styles.wrapper}>
+		<div ref={ref} className={styles.wrapper}>
 			<div className={styles.container}>
 				<Section
 					start={hitFlag === 'project'}
@@ -96,4 +96,4 @@ const Project = ({ hitFlag }) => {
 	);
 };
 
-export default Project;
+export default forwardRef(Project);
