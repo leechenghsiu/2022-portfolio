@@ -37,9 +37,6 @@ export const HomePage = () => {
 				if (scrollY >= height * 0.5) setHitFlag('skills');
 				if (scrollY >= height * 1.3) setHitFlag('project');
 				if (scrollY >= height * 2.6) setHitFlag('experience');
-			} else if (media === 'tablet') {
-				if (scrollY < height * 0.4) setHitFlag('intro');
-				if (scrollY >= height * 0.4) setHitFlag('skills');
 			} else {
 				if (scrollY < height * 0.4) setHitFlag('intro');
 				if (scrollY >= height * 0.4) setHitFlag('skills');

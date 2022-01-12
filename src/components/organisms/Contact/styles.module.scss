@@ -17,7 +17,7 @@
 		margin-left: 40px;
 		margin-right: 40px;
 
-		@media screen and (max-width: $media-tablet) {
+		@media screen and (max-width: $media-desktop) {
 			flex-direction: column;
 			max-width: none;
 		}
@@ -33,7 +33,7 @@
 				font-weight: 600;
 				margin-right: 32px;
 
-				@media screen and (max-width: $media-tablet) {
+				@media screen and (max-width: $media-desktop) {
 					margin-right: 16px;
 				}
 			}
@@ -45,7 +45,7 @@
 				color: $background;
 				margin-right: 32px;
 
-				@media screen and (max-width: $media-tablet) {
+				@media screen and (max-width: $media-desktop) {
 					margin-right: 16px;
 				}
 
@@ -57,7 +57,7 @@
 					font-family: 'Noto Sans TC', sans-serif;
 					color: $background;
 
-					@media screen and (max-width: $media-tablet) {
+					@media screen and (max-width: $media-desktop) {
 						display: none;
 					}
 				}
@@ -68,7 +68,7 @@
 			display: flex;
 			align-items: center;
 
-			@media screen and (max-width: $media-tablet) {
+			@media screen and (max-width: $media-desktop) {
 				justify-content: center;
 				margin-top: 16px;
 			}

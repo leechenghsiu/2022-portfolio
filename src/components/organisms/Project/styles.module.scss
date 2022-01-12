@@ -8,7 +8,7 @@
 	width: 100%;
 	margin-bottom: 120px;
 
-	@media screen and (max-width: $media-tablet) {
+	@media screen and (max-width: $media-desktop) {
 		margin-bottom: 80px;
 	}
 
@@ -28,7 +28,7 @@
 				margin-right: 40px;
 			}
 
-			@media screen and (max-width: $media-tablet) {
+			@media screen and (max-width: $media-desktop) {
 				margin-left: 24px;
 				margin-right: 24px;
 				margin-bottom: 80px;
@@ -37,7 +37,7 @@
 			& .sectionTitle {
 				margin-bottom: 32px;
 
-				@media screen and (max-width: $media-tablet) {
+				@media screen and (max-width: $media-desktop) {
 					margin-bottom: 24px;
 				}
 			}
@@ -47,7 +47,7 @@
 				grid-template-columns: 1fr 1fr;
 				gap: 40px;
 
-				@media screen and (max-width: $media-tablet) {
+				@media screen and (max-width: $media-desktop) {
 					grid-template-columns: 1fr;
 					gap: 24px;
 				}

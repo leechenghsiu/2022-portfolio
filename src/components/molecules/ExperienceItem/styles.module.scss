@@ -10,7 +10,7 @@
 		margin-right: 16px;
 		object-fit: contain;
 
-		@media screen and (max-width: $media-tablet) {
+		@media screen and (max-width: $media-desktop) {
 			width: 36px;
 			height: 36px;
 			margin-top: 4px;
@@ -25,7 +25,7 @@
 		& .row {
 			display: flex;
 
-			@media screen and (max-width: $media-tablet) {
+			@media screen and (max-width: $media-desktop) {
 				flex-direction: column;
 			}
 

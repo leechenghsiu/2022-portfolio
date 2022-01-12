@@ -12,7 +12,7 @@
 		position: relative;
 		margin-bottom: 10vh;
 
-		@media screen and (max-width: $media-tablet) {
+		@media screen and (max-width: $media-desktop) {
 			width: calc(100vw - 48px);
 			margin: 24px;
 			margin-bottom: 10vh;
@@ -37,7 +37,7 @@
 			flex-direction: column;
 			padding: 40px;
 
-			@media screen and (max-width: $media-tablet) {
+			@media screen and (max-width: $media-desktop) {
 				padding: 24px;
 			}
 

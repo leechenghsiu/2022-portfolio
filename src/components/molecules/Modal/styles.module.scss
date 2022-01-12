@@ -21,7 +21,7 @@
 	/* overlay the top header(100) */
 	z-index: 400;
 
-	@media screen and (max-width: $media-tablet) {
+	@media screen and (max-width: $media-desktop) {
 		-webkit-overflow-scrolling: touch;
 	}
 }
