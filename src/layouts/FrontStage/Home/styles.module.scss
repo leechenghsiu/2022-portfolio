@@ -6,6 +6,7 @@
 	flex-direction: column;
 	margin-top: 106px;
 	min-height: calc(100vh - 106px);
+	width: 100vw;
 	overflow-y: scroll;
 
 	@media screen and (max-width: $media-phone) {

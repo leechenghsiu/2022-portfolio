@@ -56,23 +56,23 @@ export const HomePage = () => {
 	useEffect(() => {
 		if (refTop !== null && hash === '') {
 			setTimeout(() => {
-				scrollToRef(refTop, 0);
-			}, 500);
+				scrollToRef(refTop, -106);
+			}, 200);
 		}
 		if (refSkill !== null && hash === '#skills') {
 			setTimeout(() => {
 				scrollToRef(refSkill, -80);
-			}, 500);
+			}, 200);
 		}
 		if (refProject !== null && hash === '#projects') {
 			setTimeout(() => {
 				scrollToRef(refProject, -80);
-			}, 500);
+			}, 200);
 		}
 		if (refExperience !== null && hash === '#experiences') {
 			setTimeout(() => {
 				scrollToRef(refExperience, -80);
-			}, 500);
+			}, 200);
 		}
 	}, [hash, refSkill, refProject, refExperience]);
 
