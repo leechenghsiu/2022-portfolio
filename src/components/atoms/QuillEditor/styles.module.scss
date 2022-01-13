@@ -15,7 +15,11 @@
 		}
 
 		&:last-child {
-			height: 198px;
+			height: 500px;
 		}
+	}
+
+	& strong {
+		font-weight: bold;
 	}
 }

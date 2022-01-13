@@ -1,11 +1,14 @@
 import React, { useRef, useCallback } from 'react';
 import { getDownloadURL } from 'firebase/storage';
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill';
+import ImageResize from 'quill-image-resize-module-react';
 import 'react-quill/dist/quill.snow.css';
 
 import { uploadRef } from 'services/firebase';
 
 import styles from './styles.module.scss';
+
+Quill.register('modules/imageResize', ImageResize);
 
 const QuillEditor = ({ value, onChange, type }) => {
 	const quill = useRef(null);
@@ -33,10 +36,26 @@ const QuillEditor = ({ value, onChange, type }) => {
 	}, [quill]);
 
 	const modules = {
-		toolbar: { container: ['bold', 'italic', 'link', 'image'], handlers: { image: imageHandler } },
+		imageResize: {
+			parchment: Quill.import('parchment'),
+			modules: ['Resize', 'DisplaySize'],
+		},
+		toolbar: [
+			[{ header: '1' }, { header: '2' }, { font: [] }],
+			[{ size: [] }],
+			['bold', 'italic', 'underline', 'strike', 'blockquote'],
+			[{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+			['link', 'image', 'video'],
+			['clean'],
+		],
+		clipboard: {
+			matchVisual: false,
+		},
 	};
 	const formats = [
 		'header',
+		'font',
+		'size',
 		'bold',
 		'italic',
 		'underline',

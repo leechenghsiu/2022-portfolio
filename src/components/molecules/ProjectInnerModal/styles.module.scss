@@ -27,9 +27,16 @@
 		}
 
 		& .player {
+			min-height: 720px;
 			overflow: hidden;
 			border-top-right-radius: 4px;
 			border-top-left-radius: 4px;
+		}
+
+		& .banner {
+			width: 100%;
+			max-height: calc(1280px * 136 / 620);
+			object-fit: cover;
 		}
 
 		& .content {
@@ -43,6 +50,14 @@
 
 			& > h1 {
 				margin-bottom: 16px;
+				font-weight: bold;
+				font-family: 'Montserrat', sans-serif;
+			}
+
+			& .desc {
+				& strong {
+					font-weight: bold;
+				}
 			}
 		}
 	}

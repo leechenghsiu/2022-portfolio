@@ -53,7 +53,7 @@ const ProjectInnerModal = () => {
 			>
 				<div className={styles.modalContainer}>
 					<Close onClick={handleClose} />
-					{videoUrl && (
+					{targetProject.video ? (
 						<div className={classnames(styles.player, loading && 'loading-skeleton')}>
 							<ReactPlayer
 								width={media === 'desktop' ? '1280px' : '100%'}
@@ -64,10 +64,17 @@ const ProjectInnerModal = () => {
 								onReady={() => setLoading(false)}
 							/>
 						</div>
+					) : (
+						<img
+							className={styles.banner}
+							src={targetProject.thumbnail}
+							alt={targetProject.title}
+						/>
 					)}
 					<div className={styles.content}>
 						<h1>{targetProject.title}</h1>
 						<div
+							className={styles.desc}
 							// eslint-disable-next-line
 							dangerouslySetInnerHTML={{ __html: targetProject.content }}
 						/>
