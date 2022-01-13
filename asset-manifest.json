@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/2022-portfolio/static/css/main.ed6f18e9.chunk.css",
-    "main.js": "/2022-portfolio/static/js/main.08a438b9.chunk.js",
-    "main.js.map": "/2022-portfolio/static/js/main.08a438b9.chunk.js.map",
+    "main.css": "/2022-portfolio/static/css/main.a7143ef5.chunk.css",
+    "main.js": "/2022-portfolio/static/js/main.b7196eab.chunk.js",
+    "main.js.map": "/2022-portfolio/static/js/main.b7196eab.chunk.js.map",
     "runtime-main.js": "/2022-portfolio/static/js/runtime-main.cec13674.js",
     "runtime-main.js.map": "/2022-portfolio/static/js/runtime-main.cec13674.js.map",
     "static/css/2.f83b9687.chunk.css": "/2022-portfolio/static/css/2.f83b9687.chunk.css",
-    "static/js/2.bc86325d.chunk.js": "/2022-portfolio/static/js/2.bc86325d.chunk.js",
-    "static/js/2.bc86325d.chunk.js.map": "/2022-portfolio/static/js/2.bc86325d.chunk.js.map",
+    "static/js/2.00417eb2.chunk.js": "/2022-portfolio/static/js/2.00417eb2.chunk.js",
+    "static/js/2.00417eb2.chunk.js.map": "/2022-portfolio/static/js/2.00417eb2.chunk.js.map",
     "static/js/3.56d0dedc.chunk.js": "/2022-portfolio/static/js/3.56d0dedc.chunk.js",
     "static/js/3.56d0dedc.chunk.js.map": "/2022-portfolio/static/js/3.56d0dedc.chunk.js.map",
     "index.html": "/2022-portfolio/index.html",
     "static/css/2.f83b9687.chunk.css.map": "/2022-portfolio/static/css/2.f83b9687.chunk.css.map",
-    "static/css/main.ed6f18e9.chunk.css.map": "/2022-portfolio/static/css/main.ed6f18e9.chunk.css.map",
-    "static/js/2.bc86325d.chunk.js.LICENSE.txt": "/2022-portfolio/static/js/2.bc86325d.chunk.js.LICENSE.txt",
+    "static/css/main.a7143ef5.chunk.css.map": "/2022-portfolio/static/css/main.a7143ef5.chunk.css.map",
+    "static/js/2.00417eb2.chunk.js.LICENSE.txt": "/2022-portfolio/static/js/2.00417eb2.chunk.js.LICENSE.txt",
     "static/media/close.33e70d04.svg": "/2022-portfolio/static/media/close.33e70d04.svg",
     "static/media/logo.edee02cc.svg": "/2022-portfolio/static/media/logo.edee02cc.svg",
     "static/media/sidebar-icon-active.57eee371.svg": "/2022-portfolio/static/media/sidebar-icon-active.57eee371.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.cec13674.js",
     "static/css/2.f83b9687.chunk.css",
-    "static/js/2.bc86325d.chunk.js",
-    "static/css/main.ed6f18e9.chunk.css",
-    "static/js/main.08a438b9.chunk.js"
+    "static/js/2.00417eb2.chunk.js",
+    "static/css/main.a7143ef5.chunk.css",
+    "static/js/main.b7196eab.chunk.js"
   ]
 }
