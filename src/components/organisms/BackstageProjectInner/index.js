@@ -73,40 +73,46 @@ const BackstageProjectInner = ({ edit = false }) => {
 		}
 		const file = e.target.files[0];
 		if (file) {
-			// eslint-disable-next-line
-			new Compressor(file, {
-				quality: 0.6,
-				success(result) {
-					const task = uploadRef(
-						`/${type === 'thumbnail' ? 'project' : 'video'}/${file.name}`,
-						result,
-					);
-					task.on(
-						'state_changed',
-						snapshot => {
-							const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-							if (type === 'thumbnail') {
+			if (type === 'thumbnail') {
+				// eslint-disable-next-line
+				new Compressor(file, {
+					quality: 0.6,
+					success(result) {
+						const task = uploadRef(`/project/${file.name}`, result);
+						task.on(
+							'state_changed',
+							snapshot => {
+								const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
 								setThumbnailProgress(prog);
-							} else {
-								setVideoProgress(prog);
-							}
-						},
-						err => console.error(err),
-						() => {
-							getDownloadURL(task.snapshot.ref).then(url => {
-								if (type === 'thumbnail') {
+							},
+							err => console.error(err),
+							() => {
+								getDownloadURL(task.snapshot.ref).then(url => {
 									setForm({ ...form, thumbnail: url });
-								} else {
-									setForm({ ...form, video: url });
-								}
-							});
-						},
-					);
-				},
-				error(err) {
-					console.log(err.message);
-				},
-			});
+								});
+							},
+						);
+					},
+					error(err) {
+						console.log(err.message);
+					},
+				});
+			} else {
+				const task = uploadRef(`/video/${file.name}`, file);
+				task.on(
+					'state_changed',
+					snapshot => {
+						const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+						setVideoProgress(prog);
+					},
+					err => console.error(err),
+					() => {
+						getDownloadURL(task.snapshot.ref).then(url => {
+							setForm({ ...form, video: url });
+						});
+					},
+				);
+			}
 		}
 	};
 	const onSubmit = () => {
@@ -241,11 +247,6 @@ const BackstageProjectInner = ({ edit = false }) => {
 							<input type="file" id="video" onChange={e => onUploadFile(e, 'video')} />
 						</label>
 					</Button>
-					{videoProgress > 0 && (
-						<FormHelperText>
-							{`${videoProgress === 100 ? 'Uploaded' : 'Uploading'}...${videoProgress}%`}
-						</FormHelperText>
-					)}
 					{videoProgress > 0 && (
 						<FormHelperText>
 							{videoProgress === 100 ? (
