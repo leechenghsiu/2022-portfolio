@@ -31,6 +31,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 		{ fetchTargetProject, updateProject, createProject, setTargetProject },
 	] = useProject();
 	const [form, setForm] = useState(targetProject);
+	const [content, setContent] = useState('');
 	const [tagInput, setTagInput] = useState('');
 	const [thumbnailProgress, setThumbnailProgress] = useState(0);
 	const [videoProgress, setVideoProgress] = useState(0);
@@ -39,19 +40,21 @@ const BackstageProjectInner = ({ edit = false }) => {
 		if (edit) {
 			fetchTargetProject(id);
 		} else {
+			console.log('123reset');
 			setTargetProject(defaultTargetProjectData);
 		}
 	}, []);
 
 	useEffect(() => {
 		if (targetProject) setForm(targetProject);
+		if (targetProject.content) setContent(targetProject.content);
 	}, [targetProject]);
 
 	const onChange = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
 	const onChangeEditor = e => {
-		setForm({ ...form, content: e });
+		setContent(e);
 	};
 	const onCreateTag = e => {
 		e.preventDefault();
@@ -107,10 +110,11 @@ const BackstageProjectInner = ({ edit = false }) => {
 		}
 	};
 	const onSubmit = () => {
+		const _form = { ...form, content };
 		if (edit) {
-			updateProject(form.id, _.omit(form, ['id']), () => push(routePath.backstageProject));
+			updateProject(_form.id, _.omit(_form, ['id']), () => push(routePath.backstageProject));
 		} else {
-			createProject(_.omit(form, ['id']), () => push(routePath.backstageProject));
+			createProject(_.omit(_form, ['id']), () => push(routePath.backstageProject));
 		}
 	};
 
@@ -178,7 +182,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3, pt: 3 }}>
 					<InputLabel shrink>Content</InputLabel>
-					<QuillEditor type="project" value={form.content} onChange={c => onChangeEditor(c)} />
+					<QuillEditor type="project" value={content} onChange={c => onChangeEditor(c)} />
 					<FormHelperText>Please enter project content</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3, pt: 2 }}>

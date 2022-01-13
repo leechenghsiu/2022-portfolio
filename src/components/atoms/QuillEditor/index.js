@@ -1,5 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { getDownloadURL } from 'firebase/storage';
+import Compressor from 'compressorjs';
 import ReactQuill, { Quill } from 'react-quill';
 import ImageResize from 'quill-image-resize-module-react';
 import 'react-quill/dist/quill.snow.css';
@@ -20,18 +21,27 @@ const QuillEditor = ({ value, onChange, type }) => {
 		input.click();
 		input.onchange = async () => {
 			const file = input.files[0];
-			const task = uploadRef(`/${type}/${file.name}`, file);
-			task.on(
-				'state_changed',
-				() => {},
-				err => console.error(err),
-				() => {
-					getDownloadURL(task.snapshot.ref).then(url => {
-						const range = editor.getSelection();
-						editor.insertEmbed(range.index, 'image', url);
-					});
+			// eslint-disable-next-line
+			new Compressor(file, {
+				quality: 0.6,
+				success(result) {
+					const task = uploadRef(`/${type}/${file.name}`, result);
+					task.on(
+						'state_changed',
+						() => {},
+						err => console.error(err),
+						() => {
+							getDownloadURL(task.snapshot.ref).then(url => {
+								const range = editor.getSelection();
+								editor.insertEmbed(range.index, 'image', url);
+							});
+						},
+					);
 				},
-			);
+				error(err) {
+					console.log(err.message);
+				},
+			});
 		};
 	}, [quill]);
 
@@ -40,14 +50,17 @@ const QuillEditor = ({ value, onChange, type }) => {
 			parchment: Quill.import('parchment'),
 			modules: ['Resize', 'DisplaySize'],
 		},
-		toolbar: [
-			[{ header: '1' }, { header: '2' }, { font: [] }],
-			[{ size: [] }],
-			['bold', 'italic', 'underline', 'strike', 'blockquote'],
-			[{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-			['link', 'image', 'video'],
-			['clean'],
-		],
+		toolbar: {
+			container: [
+				[{ header: '1' }, { header: '2' }, { font: [] }],
+				[{ size: [] }],
+				['bold', 'italic', 'underline', 'strike', 'blockquote'],
+				[{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+				['link', 'image', 'imagewithstyle', 'video'],
+				['clean'],
+			],
+			handlers: { image: imageHandler },
+		},
 		clipboard: {
 			matchVisual: false,
 		},
@@ -66,6 +79,11 @@ const QuillEditor = ({ value, onChange, type }) => {
 		'indent',
 		'link',
 		'image',
+		'alt',
+		'height',
+		'width',
+		'style',
+		'size',
 	];
 
 	return (

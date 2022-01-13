@@ -42,6 +42,7 @@ export const defaultTargetProjectData = {
 	type: '',
 	video: '',
 	weight: 0,
+	content: '',
 };
 
 const reducer = {

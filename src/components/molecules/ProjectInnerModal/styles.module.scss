@@ -11,6 +11,7 @@
 		width: 1280px;
 		position: relative;
 		margin-bottom: 10vh;
+		padding-bottom: 80px;
 
 		@media screen and (max-width: $media-desktop) {
 			width: calc(100vw - 48px);
@@ -49,14 +50,21 @@
 			}
 
 			& > h1 {
+				font-size: 64px;
+				font-weight: 800;
+				font-family: 'Noto Sans TC', sans-serif;
+				color: $primary-dark;
 				margin-bottom: 16px;
-				font-weight: bold;
-				font-family: 'Montserrat', sans-serif;
 			}
 
 			& .desc {
 				& strong {
 					font-weight: bold;
+				}
+
+				& img {
+					margin-top: 8px;
+					margin-bottom: 8px;
 				}
 			}
 		}
