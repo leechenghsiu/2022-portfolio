@@ -12,6 +12,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import _ from 'lodash';
 import dayjs from 'dayjs';
+import Compressor from 'compressorjs';
 
 import { useExperience, defaultTargetExperienceData } from 'models/experience';
 
@@ -66,20 +67,29 @@ const BackstageExperienceInner = ({ edit = false }) => {
 		setThumbnailProgress(0);
 		const file = e.target.files[0];
 		if (file) {
-			const task = uploadRef(`/experience/${file.name}`, file);
-			task.on(
-				'state_changed',
-				snapshot => {
-					const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-					setThumbnailProgress(prog);
+			// eslint-disable-next-line
+			new Compressor(file, {
+				quality: 0.6,
+				success(result) {
+					const task = uploadRef(`/experience/${file.name}`, result);
+					task.on(
+						'state_changed',
+						snapshot => {
+							const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+							setThumbnailProgress(prog);
+						},
+						err => console.error(err),
+						() => {
+							getDownloadURL(task.snapshot.ref).then(url => {
+								setForm({ ...form, thumbnail: url });
+							});
+						},
+					);
 				},
-				err => console.error(err),
-				() => {
-					getDownloadURL(task.snapshot.ref).then(url => {
-						setForm({ ...form, thumbnail: url });
-					});
+				error(err) {
+					console.log(err.message);
 				},
-			);
+			});
 		}
 	};
 	const onSubmit = () => {

@@ -67,6 +67,10 @@ const ProjectInnerModal = () => {
 					)}
 					<div className={styles.content}>
 						<h1>{targetProject.title}</h1>
+						<div
+							// eslint-disable-next-line
+							dangerouslySetInnerHTML={{ __html: targetProject.content }}
+						/>
 					</div>
 				</div>
 			</div>

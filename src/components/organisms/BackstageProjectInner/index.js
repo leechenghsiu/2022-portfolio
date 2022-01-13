@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import Chip from '@mui/material/Chip';
 import _ from 'lodash';
+import Compressor from 'compressorjs';
 
 import { useProject, defaultTargetProjectData } from 'models/project';
 
@@ -17,6 +18,7 @@ import { uploadRef } from 'services/firebase';
 import routePath from 'constants/path';
 
 import Button from 'components/atoms/Button';
+import QuillEditor from 'components/atoms/QuillEditor';
 import BackstageSectionTitle from 'components/atoms/BackstageSectionTitle';
 
 import styles from './styles.module.scss';
@@ -48,6 +50,9 @@ const BackstageProjectInner = ({ edit = false }) => {
 	const onChange = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
+	const onChangeEditor = e => {
+		setForm({ ...form, content: e });
+	};
 	const onCreateTag = e => {
 		e.preventDefault();
 		setForm({ ...form, tag: [...form.tag, e.target.value] });
@@ -65,28 +70,40 @@ const BackstageProjectInner = ({ edit = false }) => {
 		}
 		const file = e.target.files[0];
 		if (file) {
-			const task = uploadRef(`/${type === 'thumbnail' ? 'project' : 'video'}/${file.name}`, file);
-			task.on(
-				'state_changed',
-				snapshot => {
-					const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-					if (type === 'thumbnail') {
-						setThumbnailProgress(prog);
-					} else {
-						setVideoProgress(prog);
-					}
+			// eslint-disable-next-line
+			new Compressor(file, {
+				quality: 0.6,
+				success(result) {
+					const task = uploadRef(
+						`/${type === 'thumbnail' ? 'project' : 'video'}/${file.name}`,
+						result,
+					);
+					task.on(
+						'state_changed',
+						snapshot => {
+							const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+							if (type === 'thumbnail') {
+								setThumbnailProgress(prog);
+							} else {
+								setVideoProgress(prog);
+							}
+						},
+						err => console.error(err),
+						() => {
+							getDownloadURL(task.snapshot.ref).then(url => {
+								if (type === 'thumbnail') {
+									setForm({ ...form, thumbnail: url });
+								} else {
+									setForm({ ...form, video: url });
+								}
+							});
+						},
+					);
 				},
-				err => console.error(err),
-				() => {
-					getDownloadURL(task.snapshot.ref).then(url => {
-						if (type === 'thumbnail') {
-							setForm({ ...form, thumbnail: url });
-						} else {
-							setForm({ ...form, video: url });
-						}
-					});
+				error(err) {
+					console.log(err.message);
 				},
-			);
+			});
 		}
 	};
 	const onSubmit = () => {
@@ -158,6 +175,11 @@ const BackstageProjectInner = ({ edit = false }) => {
 					<FormHelperText>
 						Please enter sorting weight, prioritized by smaller number
 					</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3, pt: 3 }}>
+					<InputLabel shrink>Content</InputLabel>
+					<QuillEditor type="project" value={form.content} onChange={c => onChangeEditor(c)} />
+					<FormHelperText>Please enter project content</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3, pt: 2 }}>
 					<InputLabel shrink>Thumbnail</InputLabel>

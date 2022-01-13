@@ -1,0 +1,21 @@
+@import 'styles/color.scss';
+@import 'styles/media.scss';
+
+.quill {
+	border-radius: 8px;
+	border: solid 1px #757575;
+
+	& > div {
+		/* stylelint-disable-next-line declaration-no-important */
+		border: none !important;
+
+		&:first-child {
+			/* stylelint-disable-next-line declaration-no-important */
+			border-bottom: 1px solid #999 !important;
+		}
+
+		&:last-child {
+			height: 198px;
+		}
+	}
+}
