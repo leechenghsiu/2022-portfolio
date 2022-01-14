@@ -19,12 +19,12 @@
 			margin-bottom: 10vh;
 		}
 
-		& > svg {
+		& .closeIcon {
 			position: absolute;
 			top: 16px;
 			right: 16px;
-			cursor: pointer;
 			z-index: 5;
+			background-color: white;
 		}
 
 		& .player {
@@ -32,6 +32,15 @@
 			overflow: hidden;
 			border-top-right-radius: 4px;
 			border-top-left-radius: 4px;
+			position: relative;
+
+			& .muteIcon {
+				position: absolute;
+				bottom: 16px;
+				right: 16px;
+				z-index: 5;
+				background-color: white;
+			}
 		}
 
 		& .banner {

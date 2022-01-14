@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { use100vh } from 'react-div-100vh';
 import ReactPlayer from 'react-player';
+import IconButton from '@mui/material/IconButton';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 import { useMedia } from 'utils/hook/useMedia';
 
@@ -21,6 +24,7 @@ const ProjectInnerModal = () => {
 	const height = use100vh();
 	const [loading, setLoading] = useState(true);
 	const [videoUrl, setVideoUrl] = useState('');
+	const [mute, setMute] = useState(true);
 	const [{ type }, { closeModal }] = useModal();
 	const [{ targetProject }, { setTargetProject }] = useProject();
 
@@ -52,7 +56,9 @@ const ProjectInnerModal = () => {
 				}}
 			>
 				<div className={styles.modalContainer}>
-					<Close onClick={handleClose} />
+					<IconButton className={styles.closeIcon} onClick={handleClose}>
+						<Close />
+					</IconButton>
 					{targetProject.video ? (
 						<div className={classnames(styles.player, loading && 'loading-skeleton')}>
 							<ReactPlayer
@@ -62,7 +68,11 @@ const ProjectInnerModal = () => {
 								loop
 								playing
 								onReady={() => setLoading(false)}
+								muted={mute}
 							/>
+							<IconButton className={styles.muteIcon} onClick={() => setMute(!mute)}>
+								{mute ? <VolumeOffIcon /> : <VolumeUpIcon />}
+							</IconButton>
 						</div>
 					) : (
 						<img
