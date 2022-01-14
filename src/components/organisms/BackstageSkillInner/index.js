@@ -48,7 +48,7 @@ const BackstageSkillInner = ({ edit = false }) => {
 
 	return (
 		<div className={styles.wrapper}>
-			<BackstageSectionTitle title="Skills Edit" />
+			<BackstageSectionTitle title="Skill Edit" />
 			<div className={styles.content}>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField

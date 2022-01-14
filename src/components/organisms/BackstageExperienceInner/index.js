@@ -102,7 +102,7 @@ const BackstageExperienceInner = ({ edit = false }) => {
 
 	return (
 		<div className={styles.wrapper}>
-			<BackstageSectionTitle title="Projects Edit" />
+			<BackstageSectionTitle title="Experience Edit" />
 			<div className={styles.content}>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<InputLabel id="type">Type</InputLabel>

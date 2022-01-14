@@ -1,5 +1,10 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import BuildIcon from '@mui/icons-material/Build';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import { useAuth } from 'models/auth';
 
@@ -9,12 +14,16 @@ import routePath from 'constants/path';
 
 import { authMethods } from 'services/firebaseAuth';
 
-import { ReactComponent as SidebarActive } from 'images/icon/sidebar-icon-active.svg';
-import { ReactComponent as SidebarUnactive } from 'images/icon/sidebar-icon-unactive.svg';
-
 import styles from './styles.module.scss';
 
-const LinkItem = ({ className, to = '', selected = false, onClick = () => {}, children }) => {
+const LinkItem = ({
+	className,
+	to = '',
+	selected = false,
+	onClick = () => {},
+	children,
+	Icon = null,
+}) => {
 	const { push } = useHistory();
 
 	return (
@@ -26,7 +35,7 @@ const LinkItem = ({ className, to = '', selected = false, onClick = () => {}, ch
 				if (to) push(to);
 				onClick();
 			}}
-			Icon={() => (selected ? <SidebarActive /> : <SidebarUnactive />)}
+			Icon={Icon}
 		>
 			{children}
 		</NavButton>
@@ -56,28 +65,35 @@ const BackstageHeader = () => {
 			</div>
 			{pathname !== routePath.backstageLogin && (
 				<>
-					<LinkItem to={routePath.backstage} selected={pathname === routePath.backstage}>
+					<LinkItem
+						to={routePath.backstage}
+						selected={pathname === routePath.backstage}
+						Icon={DashboardIcon}
+					>
 						Dashboard
 					</LinkItem>
 					<LinkItem
 						to={routePath.backstageSkill}
 						selected={pathname.includes(routePath.backstageSkill)}
+						Icon={BuildIcon}
 					>
 						Skill
 					</LinkItem>
 					<LinkItem
 						to={routePath.backstageProject}
 						selected={pathname.includes(routePath.backstageProject)}
+						Icon={AssignmentIcon}
 					>
 						Project
 					</LinkItem>
 					<LinkItem
 						to={routePath.backstageExperience}
 						selected={pathname.includes(routePath.backstageExperience)}
+						Icon={WorkspacePremiumIcon}
 					>
 						Experience
 					</LinkItem>
-					<LinkItem className={styles.logoutButton} onClick={handleLogout}>
+					<LinkItem className={styles.logoutButton} onClick={handleLogout} Icon={LogoutIcon}>
 						Logout
 					</LinkItem>
 				</>
