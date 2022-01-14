@@ -3,30 +3,30 @@ import styled from 'styled-components';
 
 import styles from './styles.module.scss';
 
-const FilledText = ({ title, filledText, targetProgress, start }) => {
-	let progress = 0;
+const FilledText = ({ title, filledText, targetPercentage, start }) => {
+	let percentage = 0;
 	const textRef = useRef(null);
 	const spanRef = useRef(null);
 
 	const levelColorMap = useMemo(() => {
-		if (targetProgress > 0.7) {
+		if (targetPercentage > 0.7) {
 			return '#4cd265';
 		}
-		if (targetProgress > 0.4) {
+		if (targetPercentage > 0.4) {
 			return '#db995a';
 		}
-		if (targetProgress > 0) {
+		if (targetPercentage > 0) {
 			return '#5299d3';
 		}
 		return '#f1faee75';
-	}, [targetProgress]);
+	}, [targetPercentage]);
 
 	const run = () => {
 		if (start) {
-			if (progress < targetProgress) {
-				progress = parseFloat((progress + 0.01).toFixed(2));
-				textRef.current.style.setProperty('--progress', progress);
-				spanRef.current.innerText = `${(progress * 100).toFixed(0)}%─`;
+			if (percentage < targetPercentage) {
+				percentage = parseFloat((percentage + 0.01).toFixed(2));
+				textRef.current.style.setProperty('--percentage', percentage);
+				spanRef.current.innerText = `${(percentage * 100).toFixed(0)}%─`;
 				setTimeout(run, 20);
 			}
 		}
@@ -36,8 +36,8 @@ const FilledText = ({ title, filledText, targetProgress, start }) => {
 		if (start) {
 			run();
 		} else {
-			progress = 0;
-			textRef.current.style.setProperty('--progress', 0);
+			percentage = 0;
+			textRef.current.style.setProperty('--percentage', 0);
 			spanRef.current.innerText = '';
 		}
 	}, [start]);
@@ -54,7 +54,7 @@ const FilledText = ({ title, filledText, targetProgress, start }) => {
 };
 
 const Text = styled.h2`
-	--progress: 0;
+	--percentage: 0;
 
 	position: relative;
 	color: transparent;
@@ -67,13 +67,13 @@ const Text = styled.h2`
 	-webkit-background-clip: text;
 	padding-bottom: 1px;
 	background-image: linear-gradient(
-		#f1faee75 calc(100% - calc(var(--progress) * 100%)),
-		${props => props.color} calc(100% - calc(var(--progress) * 100%))
+		#f1faee75 calc(100% - calc(var(--percentage) * 100%)),
+		${props => props.color} calc(100% - calc(var(--percentage) * 100%))
 	);
 
 	& > span {
 		position: absolute;
-		bottom: calc(var(--progress) * 100%);
+		bottom: calc(var(--percentage) * 100%);
 		left: 0;
 		transform: translate(calc(-100% - 2px), calc(50% + 5px));
 		color: ${props => props.color};

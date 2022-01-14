@@ -1,0 +1,28 @@
+@import 'styles/color.scss';
+@import 'styles/media.scss';
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 48px 32px;
+
+	& .content {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid $primary-light-gray;
+		border-radius: 4px;
+		padding: 24px;
+	}
+
+	& .footer {
+		display: flex;
+		justify-content: flex-end;
+		padding: 24px 0;
+
+		& > button {
+			width: 144px;
+			margin-left: 12px;
+		}
+	}
+}

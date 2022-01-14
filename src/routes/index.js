@@ -13,7 +13,7 @@ import { HomePage } from 'layouts/FrontStage/Home';
 // Back Stage
 import { DashboardPage } from 'layouts/BackStage/Dashboard';
 import { LoginPage } from 'layouts/BackStage/Login';
-import { SkillPage } from 'layouts/BackStage/Skill';
+import { SkillPage, SkillCreatePage, SkillEditPage } from 'layouts/BackStage/Skill';
 import { ProjectPage, ProjectCreatePage, ProjectEditPage } from 'layouts/BackStage/Project';
 import {
 	ExperiencePage,
@@ -32,6 +32,18 @@ const Routes = props => (
 				<NavRoute exact path={routePath.backstageLogin} component={LoginPage} {...props} />
 				<AuthRoute exact path={routePath.backstage} component={DashboardPage} {...props} />
 				<AuthRoute exact path={routePath.backstageSkill} component={SkillPage} {...props} />
+				<AuthRoute
+					exact
+					path={routePath.backstageSkillCreate}
+					component={SkillCreatePage}
+					{...props}
+				/>
+				<AuthRoute
+					exact
+					path={`${routePath.backstageSkill}/:id`}
+					component={SkillEditPage}
+					{...props}
+				/>
 				<AuthRoute exact path={routePath.backstageProject} component={ProjectPage} {...props} />
 				<AuthRoute
 					exact

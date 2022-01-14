@@ -16,6 +16,8 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 // Firestore
 const db = getFirestore(firebaseApp);
+export const skillDocRef = id => (id ? doc(db, 'skill', id) : doc(db, 'skill'));
+export const skillCollectionRef = () => collection(db, 'skill');
 export const projectDocRef = id => (id ? doc(db, 'project', id) : doc(db, 'project'));
 export const projectCollectionRef = () => collection(db, 'project');
 export const experienceDocRef = id => (id ? doc(db, 'experience', id) : doc(db, 'experience'));
