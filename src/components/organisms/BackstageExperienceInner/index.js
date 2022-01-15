@@ -128,7 +128,17 @@ const BackstageExperienceInner = ({ edit = false }) => {
 						value={form.title}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter experience title</FormHelperText>
+					<FormHelperText>Please enter English experience title</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Title (Zh)"
+						name="titleZh"
+						variant="standard"
+						value={form.titleZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese experience title</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField
@@ -138,7 +148,17 @@ const BackstageExperienceInner = ({ edit = false }) => {
 						value={form.department}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter experience department</FormHelperText>
+					<FormHelperText>Please enter English experience department</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Department (Zh)"
+						name="departmentZh"
+						variant="standard"
+						value={form.departmentZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese experience department</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField
@@ -148,7 +168,17 @@ const BackstageExperienceInner = ({ edit = false }) => {
 						value={form.role}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter experience role</FormHelperText>
+					<FormHelperText>Please enter English experience role</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Role (Zh)"
+						name="roleZh"
+						variant="standard"
+						value={form.roleZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese experience role</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField
@@ -158,7 +188,17 @@ const BackstageExperienceInner = ({ edit = false }) => {
 						value={form.description}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter experience description</FormHelperText>
+					<FormHelperText>Please enter English experience description</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Description (Zh)"
+						name="descriptionZh"
+						variant="standard"
+						value={form.descriptionZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese experience description</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<LocalizationProvider dateAdapter={AdapterDayjs}>

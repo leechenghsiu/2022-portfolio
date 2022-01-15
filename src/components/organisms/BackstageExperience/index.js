@@ -30,8 +30,11 @@ const BackstageExperience = () => {
 	}, [search, experienceList]);
 	const columns = [
 		{ field: 'title', headerName: 'Title', flex: 1 },
+		{ field: 'titleZh', headerName: 'Title (Zh)', flex: 1 },
 		{ field: 'department', headerName: 'Department', flex: 1 },
+		{ field: 'departmentZh', headerName: 'Department (Zh)', flex: 1 },
 		{ field: 'role', headerName: 'Role', flex: 1 },
+		{ field: 'roleZh', headerName: 'Role (Zh)', flex: 1 },
 		{ field: 'type', headerName: 'Type', flex: 1, valueFormatter: ({ value }) => typeMap[value] },
 		{
 			field: 'id',

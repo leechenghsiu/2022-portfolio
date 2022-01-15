@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 import { useTranslation } from 'react-i18next';
 
+import i18n from 'utils/i18n';
 import { useMedia } from 'utils/hook/useMedia';
 
 import { useModal } from 'models/modal';
@@ -41,7 +42,7 @@ const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 					<animated.div style={style}>
 						<ProjectCard
 							key={project.id}
-							title={project.title}
+							title={i18n.language === 'en' ? project.title : project.titleZh}
 							thumbnail={project.thumbnail}
 							tag={project.tag}
 							onClick={() => {

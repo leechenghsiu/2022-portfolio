@@ -4,6 +4,7 @@ import { useTransition, useSpringRef, animated } from 'react-spring';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 
+import i18n from 'utils/i18n';
 import { useMedia } from 'utils/hook/useMedia';
 
 import { useExperience } from 'models/experience';
@@ -35,14 +36,16 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 					<animated.div style={style}>
 						<ExperienceItem
 							key={experience.id}
-							title={experience.title}
-							department={experience.department}
-							role={experience.role}
+							title={i18n.language === 'en' ? experience.title : experience.titleZh}
+							department={i18n.language === 'en' ? experience.department : experience.departmentZh}
+							role={i18n.language === 'en' ? experience.role : experience.roleZh}
 							startAt={
 								experience.startAt ? dayjs(experience.startAt.toDate()).format('YYYY.MM') : ''
 							}
 							endAt={experience.endAt ? dayjs(experience.endAt.toDate()).format('YYYY.MM') : ''}
-							description={experience.description}
+							description={
+								i18n.language === 'en' ? experience.description : experience.descriptionZh
+							}
 							thumbnail={experience.thumbnail}
 						/>
 					</animated.div>

@@ -66,6 +66,21 @@
 				margin-bottom: 16px;
 			}
 
+			& > .tagList {
+				display: flex;
+				gap: 8px;
+				margin-bottom: 8px;
+
+				& > p {
+					color: white;
+					background-color: $primary-dark-hover;
+					border-radius: 6px;
+					padding: 4px 12px;
+					font-size: 12px;
+					font-family: 'Montserrat', sans-serif;
+				}
+			}
+
 			& .desc {
 				& strong {
 					font-weight: bold;

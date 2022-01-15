@@ -4,6 +4,7 @@ import { use100vh } from 'react-div-100vh';
 
 import { useSkill } from 'models/skill';
 
+import i18n from 'utils/i18n';
 import { useMedia } from 'utils/hook/useMedia';
 
 import FilledText from 'components/atoms/FilledText';
@@ -33,13 +34,13 @@ const Skill = ({ hitFlag }, ref) => {
 				<div className={styles.content}>
 					{skillList
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))
-						.map(({ title, description, percentage }) => (
+						.map(({ title, titleZh, description, descriptionZh, percentage }) => (
 							<FilledText
-								key={title}
+								key={i18n.language === 'en' ? title : titleZh}
 								targetPercentage={parseFloat(percentage, 10)}
 								start={active}
-								title={title}
-								filledText={description}
+								title={i18n.language === 'en' ? title : titleZh}
+								filledText={i18n.language === 'en' ? description : descriptionZh}
 							/>
 						))}
 				</div>

@@ -58,7 +58,17 @@ const BackstageSkillInner = ({ edit = false }) => {
 						value={form.title}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter skill title</FormHelperText>
+					<FormHelperText>Please enter English skill title</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Title (Zh)"
+						name="titleZh"
+						variant="standard"
+						value={form.titleZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese skill title</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField
@@ -68,7 +78,17 @@ const BackstageSkillInner = ({ edit = false }) => {
 						value={form.description}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter skill description</FormHelperText>
+					<FormHelperText>Please enter English skill description</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Description (Zh)"
+						name="descriptionZh"
+						variant="standard"
+						value={form.descriptionZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese skill description</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField

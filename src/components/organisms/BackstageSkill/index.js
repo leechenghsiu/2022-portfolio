@@ -26,6 +26,7 @@ const BackstageSkill = () => {
 	}, [search, skillList]);
 	const columns = [
 		{ field: 'title', headerName: 'Title', flex: 1 },
+		{ field: 'titleZh', headerName: 'Title (Zh)', flex: 1 },
 		{ field: 'percentage', headerName: 'Percentage', flex: 1 },
 		{
 			field: 'id',

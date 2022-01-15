@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
+import i18n from 'utils/i18n';
 import { useMedia } from 'utils/hook/useMedia';
 
 import { useModal } from 'models/modal';
@@ -78,15 +79,22 @@ const ProjectInnerModal = () => {
 						<img
 							className={styles.banner}
 							src={targetProject.thumbnail}
-							alt={targetProject.title}
+							alt={i18n.language === 'en' ? targetProject.title : targetProject.titleZh}
 						/>
 					)}
 					<div className={styles.content}>
-						<h1>{targetProject.title}</h1>
+						<div className={styles.tagList}>
+							{targetProject.tag.map(_tag => (
+								<p key={_tag}>{_tag}</p>
+							))}
+						</div>
+						<h1>{i18n.language === 'en' ? targetProject.title : targetProject.titleZh}</h1>
 						<div
 							className={styles.desc}
 							// eslint-disable-next-line
-							dangerouslySetInnerHTML={{ __html: targetProject.content }}
+							dangerouslySetInnerHTML={{
+								__html: i18n.language === 'en' ? targetProject.content : targetProject.contentZh,
+							}}
 						/>
 					</div>
 				</div>

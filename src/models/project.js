@@ -39,10 +39,12 @@ export const defaultTargetProjectData = {
 	tag: [],
 	thumbnail: '',
 	title: '',
+	titleZh: '',
 	type: '',
 	video: '',
 	weight: 0,
 	content: '',
+	contentZh: '',
 };
 
 const reducer = {

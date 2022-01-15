@@ -32,6 +32,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 	] = useProject();
 	const [form, setForm] = useState(targetProject);
 	const [content, setContent] = useState('');
+	const [contentZh, setContentZh] = useState('');
 	const [tagInput, setTagInput] = useState('');
 	const [thumbnailProgress, setThumbnailProgress] = useState(0);
 	const [videoProgress, setVideoProgress] = useState(0);
@@ -40,7 +41,6 @@ const BackstageProjectInner = ({ edit = false }) => {
 		if (edit) {
 			fetchTargetProject(id);
 		} else {
-			console.log('123reset');
 			setTargetProject(defaultTargetProjectData);
 		}
 	}, []);
@@ -48,6 +48,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 	useEffect(() => {
 		if (targetProject) setForm(targetProject);
 		if (targetProject.content) setContent(targetProject.content);
+		if (targetProject.contentZh) setContentZh(targetProject.contentZh);
 	}, [targetProject]);
 
 	const onChange = e => {
@@ -55,6 +56,9 @@ const BackstageProjectInner = ({ edit = false }) => {
 	};
 	const onChangeEditor = e => {
 		setContent(e);
+	};
+	const onChangeZhEditor = e => {
+		setContentZh(e);
 	};
 	const onCreateTag = e => {
 		e.preventDefault();
@@ -116,7 +120,7 @@ const BackstageProjectInner = ({ edit = false }) => {
 		}
 	};
 	const onSubmit = () => {
-		const _form = { ...form, content };
+		const _form = { ...form, content, contentZh };
 		if (edit) {
 			updateProject(_form.id, _.omit(_form, ['id']), () => push(routePath.backstageProject));
 		} else {
@@ -152,7 +156,17 @@ const BackstageProjectInner = ({ edit = false }) => {
 						value={form.title}
 						onChange={onChange}
 					/>
-					<FormHelperText>Please enter project name</FormHelperText>
+					<FormHelperText>Please enter English project name</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<TextField
+						label="Title (Zh)"
+						name="titleZh"
+						variant="standard"
+						value={form.titleZh}
+						onChange={onChange}
+					/>
+					<FormHelperText>Please enter Chinese project name</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<InputLabel shrink>Tag</InputLabel>
@@ -189,7 +203,12 @@ const BackstageProjectInner = ({ edit = false }) => {
 				<FormControl variant="standard" sx={{ mb: 3, pt: 3 }}>
 					<InputLabel shrink>Content</InputLabel>
 					<QuillEditor type="project" value={content} onChange={c => onChangeEditor(c)} />
-					<FormHelperText>Please enter project content</FormHelperText>
+					<FormHelperText>Please enter English project content</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3, pt: 3 }}>
+					<InputLabel shrink>Content (Zh)</InputLabel>
+					<QuillEditor type="project" value={contentZh} onChange={c => onChangeZhEditor(c)} />
+					<FormHelperText>Please enter Chinese project content</FormHelperText>
 				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3, pt: 2 }}>
 					<InputLabel shrink>Thumbnail</InputLabel>

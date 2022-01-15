@@ -37,7 +37,9 @@ const deleteSkill = createAction('DELETE_SKILL', id => async dispatch => {
 export const defaultTargetSkillData = {
 	id: '',
 	title: '',
+	titleZh: '',
 	description: '',
+	descriptionZh: '',
 	percentage: 0,
 	weight: 0,
 };
