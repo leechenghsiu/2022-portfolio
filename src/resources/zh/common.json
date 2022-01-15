@@ -1,0 +1,22 @@
+{
+    "intro": {
+        "title": "嗨，我是李承修",
+        "subtitle-1": "對前端開發充滿熱情，也對 UI/UX 相當感興趣。",
+        "subtitle-2": "目前仍持續精進更多的前端開發技術。"
+    },
+    "project": {
+        "student-project-title": "學生專案",
+        "student-project-subtitle": "大四一整年，與指導教授討論並與同學一起製作的畢業專題。",
+        "work-project-title": "工作專案",
+        "work-project-subtitle": "採用敏捷式開發流程，跨公司協作也不成問題。",
+        "side-project-title": "其他專案",
+        "side-project-subtitle": "利用下班空閒時間與朋友承接案子並進行開發。"
+    },
+    "experience": {
+        "experience-title": "經歷",
+        "experience-subtitle": "每個階段嘗試不同新鮮事物，並從中獲取新知。",
+        "education-title": "求學經歷",
+        "work-experience-title": "工作經歷",
+        "activity-title": "活動經歷"
+    }
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, forwardRef } from 'react';
 import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
+import { useTranslation } from 'react-i18next';
 
 import { useMedia } from 'utils/hook/useMedia';
 
@@ -56,6 +57,7 @@ const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 };
 
 const Project = ({ hitFlag }, ref) => {
+	const { t } = useTranslation();
 	const [{ projectList }, { fetchProjects }] = useProject();
 
 	useEffect(() => {
@@ -70,16 +72,16 @@ const Project = ({ hitFlag }, ref) => {
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'student')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Student Projects"
-					subTitle="Results from the last year of college, working with schoolmates all over the year."
+					sectionTitle={t('project.student-project-title')}
+					subTitle={t('project.student-project-subtitle')}
 				/>
 				<Section
 					start={hitFlag === 'project'}
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'work')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Work Projects"
-					subTitle="Collaborate with multiple companies, adopting AGILE development method throughout the process."
+					sectionTitle={t('project.work-project-title')}
+					subTitle={t('project.work-project-subtitle')}
 				/>
 				<Section
 					last
@@ -87,8 +89,8 @@ const Project = ({ hitFlag }, ref) => {
 					data={projectList
 						.filter(({ type: projectType }) => projectType === 'side')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Side Projects"
-					subTitle="Working on piecework basis during spare time after work."
+					sectionTitle={t('project.side-project-title')}
+					subTitle={t('project.side-project-subtitle')}
 				/>
 			</div>
 			<ProjectInnerModal />

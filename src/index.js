@@ -10,6 +10,8 @@ import Routes from './routes';
 import configureStore from './store';
 import reportWebVitals from './reportWebVitals';
 
+import 'utils/i18n';
+
 import 'styles/global.scss';
 
 const auth = getAuth(firebaseApp);

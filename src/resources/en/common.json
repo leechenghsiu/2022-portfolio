@@ -1,0 +1,22 @@
+{
+    "intro": {
+        "title": "Matthew Lee",
+        "subtitle-1": "With a great passion for front-end development, and interested in UI/UX design.",
+        "subtitle-2": "Currently, still learning more techniques of front-end development."
+    },
+    "project": {
+        "student-project-title": "Student Projects",
+        "student-project-subtitle": "Results from the last year of college, working with schoolmates all over the year.",
+        "work-project-title": "Work Projects",
+        "work-project-subtitle": "Collaborate with multiple companies, adopting AGILE development method throughout the process.",
+        "side-project-title": "Side Projects",
+        "side-project-subtitle": "Working on piecework basis during spare time after work."
+    },
+    "experience": {
+        "experience-title": "Experiences",
+        "experience-subtitle": "Try new things at every stage, and learn things from each.",
+        "education-title": "Education",
+        "work-experience-title": "Work Experiences",
+        "activity-title": "Activities"
+    }
+}

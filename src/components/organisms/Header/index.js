@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import { useScroll } from 'utils/hook/event';
+import i18n from 'utils/i18n';
 
 import { ReactComponent as Logo } from 'images/logo/logo.svg';
-// import { ReactComponent as Language } from 'images/icon/language.svg';
+import { ReactComponent as Language } from 'images/icon/language.svg';
 
 import styles from './styles.module.scss';
 
@@ -37,11 +38,14 @@ const Header = ({ className, open }) => {
 					<li>
 						<NavLink to="/#experiences">EXPERIENCES</NavLink>
 					</li>
-					{/* <li>
-						<button type="button" onClick={() => {}}>
+					<li>
+						<button
+							type="button"
+							onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}
+						>
 							<Language />
 						</button>
-					</li> */}
+					</li>
 				</ul>
 			</nav>
 		</header>

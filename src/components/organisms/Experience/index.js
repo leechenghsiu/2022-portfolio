@@ -2,6 +2,7 @@ import React, { useEffect, forwardRef } from 'react';
 import classnames from 'classnames';
 import { useTransition, useSpringRef, animated } from 'react-spring';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 
 import { useMedia } from 'utils/hook/useMedia';
 
@@ -52,6 +53,7 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 };
 
 const Experience = ({ hitFlag }, ref) => {
+	const { t } = useTranslation();
 	const [{ experienceList }, { fetchExperiences }] = useExperience();
 
 	useEffect(() => {
@@ -61,22 +63,22 @@ const Experience = ({ hitFlag }, ref) => {
 	return (
 		<div ref={ref} className={styles.wrapper}>
 			<div className={styles.container}>
-				<SectionTitle className={styles.sectionTitle} title="Experiences">
-					<p>Try new things at every stage, and learn things from each.</p>
+				<SectionTitle className={styles.sectionTitle} title={t('experience.experience-title')}>
+					<p>{t('experience.experience-subtitle')}</p>
 				</SectionTitle>
 				<Section
 					start={hitFlag === 'experience'}
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'education')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Education"
+					sectionTitle={t('experience.education-title')}
 				/>
 				<Section
 					start={hitFlag === 'experience'}
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'job')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Work Experiences"
+					sectionTitle={t('experience.work-experience-title')}
 				/>
 				<Section
 					last
@@ -84,7 +86,7 @@ const Experience = ({ hitFlag }, ref) => {
 					data={experienceList
 						.filter(({ type: experienceType }) => experienceType === 'activity')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
-					sectionTitle="Activities"
+					sectionTitle={t('experience.activity-title')}
 				/>
 			</div>
 		</div>
