@@ -14,6 +14,7 @@ import path from 'constants/path';
 
 export const setLogin = createAction('SET_LOGIN');
 export const setLogout = createAction('SET_LOGOUT');
+export const setAdmin = createAction('SET_ADMIN');
 
 export const updateAccessToken = createAction('UPDATE_ACCESS_TOKEN', token => {
 	storage.setItem('token', JSON.stringify(token));
@@ -151,6 +152,12 @@ const reducer = {
 				token: action.payload,
 			}),
 
+			SET_ADMIN: state => ({
+				...state,
+
+				isAdmin: true,
+			}),
+
 			SET_LOGIN: state => ({
 				...state,
 
@@ -161,12 +168,14 @@ const reducer = {
 				...state,
 
 				isLogin: false,
+				isAdmin: false,
 			}),
 		},
 		{
 			loginForm: defaultLoginFormData,
 			token: defaultTokenData,
 			isLogin: false,
+			isAdmin: false,
 		},
 	),
 };
@@ -174,11 +183,13 @@ const reducer = {
 const selectAuth = createSelector(
 	state => state.auth.token,
 	state => state.auth.isLogin,
-	(token, isLogin) => ({ token, hasToken: isExist(token.access_token), isLogin }),
+	state => state.auth.isAdmin,
+	(token, isLogin, isAdmin) => ({ token, hasToken: isExist(token.access_token), isLogin, isAdmin }),
 );
 
 export const useAuth = () =>
 	useRedux(selectAuth, {
+		setAdmin,
 		setLogin,
 		setLogout,
 		logout,

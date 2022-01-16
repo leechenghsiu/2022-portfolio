@@ -4,6 +4,15 @@
 	justify-content: center;
 	flex: 1;
 
+	& .alert {
+		position: fixed;
+		top: 10vh;
+
+		& span {
+			font-weight: bold;
+		}
+	}
+
 	& .authModal {
 		width: 320px;
 	}

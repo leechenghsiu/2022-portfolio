@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { onAuthStateChanged } from 'firebase/auth';
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
-import firebaseApp from 'services/firebase';
+import { auth } from 'services/firebase';
 
 import Routes from './routes';
 import configureStore from './store';
@@ -13,8 +12,6 @@ import reportWebVitals from './reportWebVitals';
 import 'utils/i18n';
 
 import 'styles/global.scss';
-
-const auth = getAuth(firebaseApp);
 
 const store = configureStore({});
 

@@ -31,7 +31,7 @@ const Contact = () => (
 				</a>
 			</div>
 			<div className={styles.copyright}>
-				<NavLink target="_blank" to="/backstage">
+				<NavLink target="_blank" to="/backstage/skill">
 					Matthew Lee,&nbsp;&nbsp;2022
 				</NavLink>
 			</div>

@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutline } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
+import { useAuth } from 'models/auth';
 import { useProject } from 'models/project';
 
 import routePath from 'constants/path';
@@ -19,6 +20,7 @@ const typeMap = { student: 'Student Project', work: 'Work Project', side: 'Side 
 const BackstageProject = () => {
 	const { push } = useHistory();
 	const [search, setSearch] = useState('');
+	const [{ isAdmin }] = useAuth();
 	const [{ projectList }, { fetchProjects, deleteProject }] = useProject();
 	const filteredProjectList = useMemo(() => {
 		if (search !== '') {
@@ -48,7 +50,7 @@ const BackstageProject = () => {
 						</IconButton>
 					</Tooltip>
 					<Tooltip title="Delete">
-						<IconButton onClick={() => deleteProject(value)}>
+						<IconButton onClick={() => isAdmin && deleteProject(value)}>
 							<DeleteOutline color="action" />
 						</IconButton>
 					</Tooltip>

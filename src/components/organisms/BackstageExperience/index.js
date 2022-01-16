@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutline } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
+import { useAuth } from 'models/auth';
 import { useExperience } from 'models/experience';
 
 import routePath from 'constants/path';
@@ -19,6 +20,7 @@ const typeMap = { education: 'Education', job: 'Job', activity: 'Activity' };
 const BackstageExperience = () => {
 	const { push } = useHistory();
 	const [search, setSearch] = useState('');
+	const [{ isAdmin }] = useAuth();
 	const [{ experienceList }, { fetchExperiences, deleteExperience }] = useExperience();
 	const filteredExperienceList = useMemo(() => {
 		if (search !== '') {
@@ -48,7 +50,7 @@ const BackstageExperience = () => {
 						</IconButton>
 					</Tooltip>
 					<Tooltip title="Delete">
-						<IconButton onClick={() => deleteExperience(value)}>
+						<IconButton onClick={() => isAdmin && deleteExperience(value)}>
 							<DeleteOutline color="action" />
 						</IconButton>
 					</Tooltip>

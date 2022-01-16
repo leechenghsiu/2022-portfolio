@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutline } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
+import { useAuth } from 'models/auth';
 import { useSkill } from 'models/skill';
 
 import routePath from 'constants/path';
@@ -17,6 +18,7 @@ import styles from './styles.module.scss';
 const BackstageSkill = () => {
 	const { push } = useHistory();
 	const [search, setSearch] = useState('');
+	const [{ isAdmin }] = useAuth();
 	const [{ skillList }, { fetchSkills, deleteSkill }] = useSkill();
 	const filteredSkillList = useMemo(() => {
 		if (search !== '') {
@@ -40,7 +42,7 @@ const BackstageSkill = () => {
 						</IconButton>
 					</Tooltip>
 					<Tooltip title="Delete">
-						<IconButton onClick={() => deleteSkill(value)}>
+						<IconButton onClick={() => isAdmin && deleteSkill(value)}>
 							<DeleteOutline color="action" />
 						</IconButton>
 					</Tooltip>

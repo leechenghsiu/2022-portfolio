@@ -14,6 +14,7 @@ import _ from 'lodash';
 import dayjs from 'dayjs';
 import Compressor from 'compressorjs';
 
+import { useAuth } from 'models/auth';
 import { useExperience, defaultTargetExperienceData } from 'models/experience';
 
 import { uploadRef } from 'services/firebase';
@@ -28,6 +29,7 @@ import styles from './styles.module.scss';
 const BackstageExperienceInner = ({ edit = false }) => {
 	const { id } = useParams();
 	const { push } = useHistory();
+	const [{ isAdmin }] = useAuth();
 	const [
 		{ targetExperience },
 		{ fetchTargetExperience, updateExperience, createExperience, setTargetExperience },
@@ -285,7 +287,13 @@ const BackstageExperienceInner = ({ edit = false }) => {
 				>
 					Cancel
 				</Button>
-				<Button className={styles.uploadButton} variant="normal" size="large" onClick={onSubmit}>
+				<Button
+					className={styles.uploadButton}
+					disabled={!isAdmin}
+					variant="normal"
+					size="large"
+					onClick={onSubmit}
+				>
 					Submit
 				</Button>
 			</div>

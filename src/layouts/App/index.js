@@ -1,11 +1,14 @@
 import React, { Suspense, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
+import Alert from '@mui/material/Alert';
 
 import { useScrollDirection } from 'utils/hook/event';
 import { useMedia } from 'utils/hook/useMedia';
 
 import { useAuth } from 'models/auth';
+
+import routePath from 'constants/path';
 
 import Header from 'components/organisms/Header';
 import BackstageHeader from 'components/organisms/BackstageHeader';
@@ -16,12 +19,16 @@ const App = ({ user, children }) => {
 	const { pathname } = useLocation();
 	const scrollDirection = useScrollDirection();
 	const media = useMedia();
-	const [, { setLogin }] = useAuth();
+	const [{ isAdmin }, { setLogin, setAdmin }] = useAuth();
 	const isBackstage = pathname.startsWith('/backstage');
-
+	console.log(pathname);
 	useEffect(() => {
 		if (user) {
 			setLogin();
+
+			if (user.email === 'matthew6303@gmail.com') {
+				setAdmin();
+			}
 		}
 	}, [user]);
 
@@ -34,6 +41,11 @@ const App = ({ user, children }) => {
 					<Header open={scrollDirection === 'up' || media === 'phone'} />
 				)}
 				{children}
+				{isBackstage && pathname !== routePath.backstageLogin && !isAdmin && (
+					<Alert className={styles.alert} variant="standard" severity="info">
+						<span>You&apos;re in preview mode</span>
+					</Alert>
+				)}
 			</div>
 		</Suspense>
 	);

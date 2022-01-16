@@ -11,6 +11,7 @@ import Chip from '@mui/material/Chip';
 import _ from 'lodash';
 import Compressor from 'compressorjs';
 
+import { useAuth } from 'models/auth';
 import { useProject, defaultTargetProjectData } from 'models/project';
 
 import { uploadRef } from 'services/firebase';
@@ -26,6 +27,7 @@ import styles from './styles.module.scss';
 const BackstageProjectInner = ({ edit = false }) => {
 	const { id } = useParams();
 	const { push } = useHistory();
+	const [{ isAdmin }] = useAuth();
 	const [
 		{ targetProject },
 		{ fetchTargetProject, updateProject, createProject, setTargetProject },
@@ -294,7 +296,13 @@ const BackstageProjectInner = ({ edit = false }) => {
 				>
 					Cancel
 				</Button>
-				<Button className={styles.uploadButton} variant="normal" size="large" onClick={onSubmit}>
+				<Button
+					className={styles.uploadButton}
+					disabled={!isAdmin}
+					variant="normal"
+					size="large"
+					onClick={onSubmit}
+				>
 					Submit
 				</Button>
 			</div>

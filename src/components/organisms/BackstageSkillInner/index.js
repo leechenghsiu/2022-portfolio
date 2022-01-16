@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import _ from 'lodash';
 
+import { useAuth } from 'models/auth';
 import { useSkill, defaultTargetSkillData } from 'models/skill';
 
 import routePath from 'constants/path';
@@ -17,6 +18,7 @@ import styles from './styles.module.scss';
 const BackstageSkillInner = ({ edit = false }) => {
 	const { id } = useParams();
 	const { push } = useHistory();
+	const [{ isAdmin }] = useAuth();
 	const [{ targetSkill }, { fetchTargetSkill, updateSkill, createSkill, setTargetSkill }] =
 		useSkill();
 	const [form, setForm] = useState(targetSkill);
@@ -122,7 +124,13 @@ const BackstageSkillInner = ({ edit = false }) => {
 				>
 					Cancel
 				</Button>
-				<Button className={styles.uploadButton} variant="normal" size="large" onClick={onSubmit}>
+				<Button
+					className={styles.uploadButton}
+					disabled={!isAdmin}
+					variant="normal"
+					size="large"
+					onClick={onSubmit}
+				>
 					Submit
 				</Button>
 			</div>

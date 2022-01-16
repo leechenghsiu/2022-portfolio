@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
+import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 // import { EmailAuthProvider } from 'firebase/auth';
 // import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -18,11 +20,16 @@ import styles from './styles.module.scss';
 export const LoginPage = () => {
 	const { push } = useHistory();
 	const [form, setForm] = useState({ email: '', password: '' });
+	const [loading, setLoading] = useState(false);
 	const onChange = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
-	const onLogin = () => {
-		authMethods.signIn(form, () => push(routePath.backstageSkill));
+	const onLogin = async () => {
+		setLoading(true);
+		await authMethods.signIn(form, () => {
+			push(routePath.backstageSkill);
+			setLoading(false);
+		});
 	};
 
 	// const uiConfig = {
@@ -39,6 +46,10 @@ export const LoginPage = () => {
 
 	return (
 		<div className={styles.wrapper}>
+			<Alert className={styles.alert} variant="standard" severity="info">
+				Try login with&nbsp;
+				<span>demo@gmail.com/demo2022</span>
+			</Alert>
 			<div className={styles.container}>
 				<BackstageSectionTitle title="Login" />
 				<div className={styles.loginForm}>
@@ -60,11 +71,16 @@ export const LoginPage = () => {
 							value={form.password}
 							onChange={onChange}
 							type="password"
+							onKeyPress={e => {
+								if (e.key === 'Enter' && form.email && form.password) {
+									onLogin();
+								}
+							}}
 						/>
 						<FormHelperText>Please enter your password</FormHelperText>
 					</FormControl>
 					<Button className={styles.uploadButton} variant="normal" size="large" onClick={onLogin}>
-						Login
+						{loading ? <CircularProgress color="inherit" size={24} /> : 'Login'}
 					</Button>
 				</div>
 				{/* <StyledFirebaseAuth className={styles.authModal} uiConfig={uiConfig} firebaseAuth={auth} /> */}
