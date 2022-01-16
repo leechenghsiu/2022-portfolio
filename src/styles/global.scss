@@ -18,6 +18,10 @@
 	outline: none;
 }
 
+html {
+	height: 100vh;
+}
+
 body,
 input,
 select,
@@ -88,30 +92,6 @@ h6,
 p {
 	margin: 0;
 	padding: 0;
-}
-
-@media print {
-	@page {
-		size: a4 portrait;
-		margin: 40px 0;
-	}
-
-	html,
-	body {
-		width: 794px;
-		height: 1123px;
-
-		&:global(.no-scroll) {
-			position: absolute;
-
-			/* stylelint-disable-next-line declaration-no-important */
-			top: 0 !important;
-		}
-
-		& > div:first-child {
-			display: none;
-		}
-	}
 }
 
 .loading-skeleton {
