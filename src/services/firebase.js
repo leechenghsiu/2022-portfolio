@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, doc } from 'firebase/firestore/lite';
 import { getStorage, getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -27,5 +28,8 @@ export const experienceCollectionRef = () => collection(db, 'experience');
 const storage = getStorage(firebaseApp);
 export const storageRef = path => getDownloadURL(ref(storage, path));
 export const uploadRef = (path, file) => uploadBytesResumable(ref(storage, path), file);
+
+// Google Analytics
+export const analytics = getAnalytics();
 
 export default firebaseApp;
