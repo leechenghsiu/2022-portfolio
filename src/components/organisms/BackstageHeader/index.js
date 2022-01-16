@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+// import DashboardIcon from '@mui/icons-material/Dashboard';
 import BuildIcon from '@mui/icons-material/Build';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
@@ -65,13 +65,13 @@ const BackstageHeader = () => {
 			</div>
 			{pathname !== routePath.backstageLogin && (
 				<>
-					<LinkItem
+					{/* <LinkItem
 						to={routePath.backstage}
 						selected={pathname === routePath.backstage}
 						Icon={DashboardIcon}
 					>
 						Dashboard
-					</LinkItem>
+					</LinkItem> */}
 					<LinkItem
 						to={routePath.backstageSkill}
 						selected={pathname.includes(routePath.backstageSkill)}

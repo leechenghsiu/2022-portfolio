@@ -22,7 +22,7 @@ export const LoginPage = () => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
 	const onLogin = () => {
-		authMethods.signIn(form, () => push(routePath.backstage));
+		authMethods.signIn(form, () => push(routePath.backstageSkill));
 	};
 
 	// const uiConfig = {
