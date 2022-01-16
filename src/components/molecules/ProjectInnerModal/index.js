@@ -70,6 +70,7 @@ const ProjectInnerModal = () => {
 								playing
 								onReady={() => setLoading(false)}
 								muted={mute}
+								playsinline
 							/>
 							<IconButton className={styles.muteIcon} onClick={() => setMute(!mute)}>
 								{mute ? <VolumeOffIcon /> : <VolumeUpIcon />}
