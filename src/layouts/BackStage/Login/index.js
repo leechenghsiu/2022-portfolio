@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import Alert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
+import Slide from '@mui/material/Slide';
 // import { EmailAuthProvider } from 'firebase/auth';
 // import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -20,6 +21,7 @@ import styles from './styles.module.scss';
 export const LoginPage = () => {
 	const { push } = useHistory();
 	const [form, setForm] = useState({ email: '', password: '' });
+	const [alertIn, setAlertIn] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const onChange = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,6 +33,12 @@ export const LoginPage = () => {
 			setLoading(false);
 		});
 	};
+
+	useEffect(() => {
+		setTimeout(() => {
+			setAlertIn(true);
+		}, 1000);
+	}, []);
 
 	// const uiConfig = {
 	// 	signInFlow: 'redirect',
@@ -46,10 +54,17 @@ export const LoginPage = () => {
 
 	return (
 		<div className={styles.wrapper}>
-			<Alert className={styles.alert} variant="standard" severity="info">
-				Try login with&nbsp;
-				<span>demo@gmail.com/demo2022</span>
-			</Alert>
+			<Slide direction="down" in={alertIn} mountOnEnter unmountOnExit>
+				<Alert className={styles.alert} variant="standard" severity="info">
+					Try login with the below account
+					<br />
+					Email:&nbsp;
+					<span>demo@gmail.com</span>
+					<br />
+					Password:&nbsp;
+					<span>demo2022</span>
+				</Alert>
+			</Slide>
 			<div className={styles.container}>
 				<BackstageSectionTitle title="Login" />
 				<div className={styles.loginForm}>
