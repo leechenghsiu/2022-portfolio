@@ -21,7 +21,7 @@ const App = ({ user, children }) => {
 	const media = useMedia();
 	const [{ isAdmin }, { setLogin, setAdmin }] = useAuth();
 	const isBackstage = pathname.startsWith('/backstage');
-	console.log(pathname);
+
 	useEffect(() => {
 		if (user) {
 			setLogin();
