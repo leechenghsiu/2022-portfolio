@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import styled from 'styled-components';
 
 import styles from './styles.module.scss';
 
 const FilledText = ({ title, filledText, targetPercentage, start }) => {
 	let percentage = 0;
+	const [running, setRunning] = useState(false);
 	const textRef = useRef(null);
 	const spanRef = useRef(null);
 
@@ -28,17 +29,20 @@ const FilledText = ({ title, filledText, targetPercentage, start }) => {
 				textRef.current.style.setProperty('--percentage', percentage);
 				spanRef.current.innerText = `${(percentage * 100).toFixed(0)}%─`;
 				setTimeout(run, 20);
+			} else {
+				setRunning(false);
 			}
 		}
 	};
 
 	useEffect(() => {
-		if (start) {
-			run();
-		} else {
+		if (start && !running) {
 			percentage = 0;
 			textRef.current.style.setProperty('--percentage', 0);
 			spanRef.current.innerText = '';
+
+			setRunning(true);
+			run();
 		}
 	}, [start]);
 

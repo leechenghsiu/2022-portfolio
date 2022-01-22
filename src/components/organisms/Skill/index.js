@@ -23,7 +23,11 @@ const Skill = ({ hitFlag }, ref) => {
 	}, []);
 
 	useEffect(() => {
-		if (!active && hitFlag === 'skills') setActive(true);
+		if (hitFlag === 'skills') {
+			setActive(true);
+		} else {
+			setActive(false);
+		}
 	}, [hitFlag]);
 
 	return (
