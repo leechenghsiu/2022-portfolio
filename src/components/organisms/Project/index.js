@@ -60,6 +60,7 @@ const Section = ({ start, data, sectionTitle, subTitle, last = false }) => {
 const Project = ({ hitFlag }, ref) => {
 	const { t } = useTranslation();
 	const [{ projectList }, { fetchProjects }] = useProject();
+	const filteredProjectList = projectList.filter(({ status }) => status === 'visible');
 
 	useEffect(() => {
 		fetchProjects();
@@ -70,7 +71,7 @@ const Project = ({ hitFlag }, ref) => {
 			<div className={styles.container}>
 				<Section
 					start={hitFlag === 'project'}
-					data={projectList
+					data={filteredProjectList
 						.filter(({ type: projectType }) => projectType === 'student')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('project.student-project-title')}
@@ -78,7 +79,7 @@ const Project = ({ hitFlag }, ref) => {
 				/>
 				<Section
 					start={hitFlag === 'project'}
-					data={projectList
+					data={filteredProjectList
 						.filter(({ type: projectType }) => projectType === 'work')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('project.work-project-title')}
@@ -87,7 +88,7 @@ const Project = ({ hitFlag }, ref) => {
 				<Section
 					last
 					start={hitFlag === 'project'}
-					data={projectList
+					data={filteredProjectList
 						.filter(({ type: projectType }) => projectType === 'side')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('project.side-project-title')}

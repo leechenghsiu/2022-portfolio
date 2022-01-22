@@ -42,6 +42,7 @@ export const defaultTargetSkillData = {
 	descriptionZh: '',
 	percentage: 0,
 	weight: 0,
+	status: '',
 };
 
 const reducer = {

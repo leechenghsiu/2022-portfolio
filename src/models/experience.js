@@ -68,6 +68,7 @@ export const defaultTargetExperienceData = {
 	startAt: '',
 	endAt: '',
 	weight: 0,
+	status: '',
 };
 
 const reducer = {

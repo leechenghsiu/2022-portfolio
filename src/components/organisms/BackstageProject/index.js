@@ -29,6 +29,12 @@ const BackstageProject = () => {
 		return projectList;
 	}, [search, projectList]);
 	const columns = [
+		{
+			field: 'status',
+			headerName: 'Status',
+			flex: 1,
+			valueFormatter: ({ value }) => (value === 'hidden' ? 'Hidden' : 'Visible'),
+		},
 		{ field: 'title', headerName: 'Title', flex: 1 },
 		{ field: 'titleZh', headerName: 'Title (Zh)', flex: 1 },
 		{ field: 'type', headerName: 'Type', flex: 1, valueFormatter: ({ value }) => typeMap[value] },

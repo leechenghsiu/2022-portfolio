@@ -107,6 +107,21 @@ const BackstageExperienceInner = ({ edit = false }) => {
 			<BackstageSectionTitle title="Experience Edit" />
 			<div className={styles.content}>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<InputLabel id="status">Status</InputLabel>
+					<Select
+						labelId="status"
+						name="status"
+						id="status-select"
+						value={form.status}
+						onChange={onChange}
+						label="Status"
+					>
+						<MenuItem value="visible">Visible</MenuItem>
+						<MenuItem value="hidden">Hidden</MenuItem>
+					</Select>
+					<FormHelperText>Please select experience status</FormHelperText>
+				</FormControl>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<InputLabel id="type">Type</InputLabel>
 					<Select
 						labelId="type"

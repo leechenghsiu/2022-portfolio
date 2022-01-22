@@ -58,6 +58,7 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 const Experience = ({ hitFlag }, ref) => {
 	const { t } = useTranslation();
 	const [{ experienceList }, { fetchExperiences }] = useExperience();
+	const filteredExperienceList = experienceList.filter(({ status }) => status === 'visible');
 
 	useEffect(() => {
 		fetchExperiences();
@@ -71,14 +72,14 @@ const Experience = ({ hitFlag }, ref) => {
 				</SectionTitle>
 				<Section
 					start={hitFlag === 'experience'}
-					data={experienceList
+					data={filteredExperienceList
 						.filter(({ type: experienceType }) => experienceType === 'education')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('experience.education-title')}
 				/>
 				<Section
 					start={hitFlag === 'experience'}
-					data={experienceList
+					data={filteredExperienceList
 						.filter(({ type: experienceType }) => experienceType === 'job')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('experience.work-experience-title')}
@@ -86,7 +87,7 @@ const Experience = ({ hitFlag }, ref) => {
 				<Section
 					last
 					start={hitFlag === 'experience'}
-					data={experienceList
+					data={filteredExperienceList
 						.filter(({ type: experienceType }) => experienceType === 'activity')
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))}
 					sectionTitle={t('experience.activity-title')}

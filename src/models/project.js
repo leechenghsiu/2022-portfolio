@@ -45,6 +45,7 @@ export const defaultTargetProjectData = {
 	weight: 0,
 	content: '',
 	contentZh: '',
+	status: '',
 };
 
 const reducer = {

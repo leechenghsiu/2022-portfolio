@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import _ from 'lodash';
@@ -52,6 +55,21 @@ const BackstageSkillInner = ({ edit = false }) => {
 		<div className={styles.wrapper}>
 			<BackstageSectionTitle title="Skill Edit" />
 			<div className={styles.content}>
+				<FormControl variant="standard" sx={{ mb: 3 }}>
+					<InputLabel id="status">Status</InputLabel>
+					<Select
+						labelId="status"
+						name="status"
+						id="status-select"
+						value={form.status}
+						onChange={onChange}
+						label="Status"
+					>
+						<MenuItem value="visible">Visible</MenuItem>
+						<MenuItem value="hidden">Hidden</MenuItem>
+					</Select>
+					<FormHelperText>Please select skill status</FormHelperText>
+				</FormControl>
 				<FormControl variant="standard" sx={{ mb: 3 }}>
 					<TextField
 						label="Title"

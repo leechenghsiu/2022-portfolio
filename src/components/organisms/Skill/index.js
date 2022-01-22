@@ -16,6 +16,7 @@ const Skill = ({ hitFlag }, ref) => {
 	const media = useMedia();
 	const [active, setActive] = useState(false);
 	const [{ skillList }, { fetchSkills }] = useSkill();
+	const filteredSkillList = skillList.filter(({ status }) => status === 'visible');
 
 	useEffect(() => {
 		fetchSkills();
@@ -32,7 +33,7 @@ const Skill = ({ hitFlag }, ref) => {
 				style={{ height: media === 'desktop' ? 0.7 * height : 'auto' }}
 			>
 				<div className={styles.content}>
-					{skillList
+					{filteredSkillList
 						.sort((a, b) => parseInt(a.weight, 10) - parseInt(b.weight, 10))
 						.map(({ title, titleZh, description, descriptionZh, percentage }) => (
 							<FilledText
