@@ -47,9 +47,9 @@ const BackstageHeader = () => {
 	const { pathname } = useLocation();
 	const [, { setLogout }] = useAuth();
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
 		setLogout();
-		authMethods.signOut();
+		await authMethods.signOut().then(log => console.log(log));
 	};
 
 	return (

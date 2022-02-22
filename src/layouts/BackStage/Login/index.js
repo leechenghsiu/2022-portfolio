@@ -28,10 +28,14 @@ export const LoginPage = () => {
 	};
 	const onLogin = async () => {
 		setLoading(true);
-		await authMethods.signIn(form, () => {
-			push(routePath.backstageSkill);
-			setLoading(false);
-		});
+		await authMethods
+			.signIn(form)
+			.then(user => {
+				console.log('login success', user);
+				push(routePath.backstageSkill);
+			})
+			.catch(err => console.error(err));
+		setLoading(false);
 	};
 
 	useEffect(() => {
