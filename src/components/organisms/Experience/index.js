@@ -25,10 +25,10 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 		enter: { opacity: 1 },
 	});
 	const ing = exp => {
-		if (exp.endAt !== exp.startAt) {
+		if (exp.endAt.seconds !== exp.startAt.seconds) {
 			return dayjs(exp.endAt.toDate()).format('YYYY.MM');
 		}
-		return t('experience.experience-title');
+		return t('experience.ing');
 	};
 
 	useEffect(() => {
