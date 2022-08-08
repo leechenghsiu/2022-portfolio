@@ -15,6 +15,7 @@ import ExperienceItem from 'components/molecules/ExperienceItem';
 import styles from './styles.module.scss';
 
 const Section = ({ start, data, sectionTitle, last = false }) => {
+	const { t } = useTranslation();
 	const media = useMedia();
 	const transRef = useSpringRef();
 	const transitions = useTransition(data, {
@@ -23,6 +24,12 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 		from: { opacity: 0 },
 		enter: { opacity: 1 },
 	});
+	const ing = exp => {
+		if (exp.endAt !== exp.startAt) {
+			return dayjs(exp.endAt.toDate()).format('YYYY.MM');
+		}
+		return t('experience.experience-title');
+	};
 
 	useEffect(() => {
 		if (start) transRef.start();
@@ -42,7 +49,7 @@ const Section = ({ start, data, sectionTitle, last = false }) => {
 							startAt={
 								experience.startAt ? dayjs(experience.startAt.toDate()).format('YYYY.MM') : ''
 							}
-							endAt={experience.endAt ? dayjs(experience.endAt.toDate()).format('YYYY.MM') : ''}
+							endAt={ing(experience)}
 							description={
 								i18n.language === 'en' ? experience.description : experience.descriptionZh
 							}
