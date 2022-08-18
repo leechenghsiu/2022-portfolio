@@ -6,27 +6,184 @@
 	position: relative;
 
 	& .intro {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		position: absolute;
 		left: calc((100vw - 1280px) / 2);
 		top: calc(100% - 106px);
 		transform: translate(0, -50%);
+		max-width: 1280px;
+		width: 100%;
 
 		@media screen and (max-width: $media-desktop) {
-			left: 40px;
-		}
-
-		@media screen and (max-width: $media-desktop) {
+			flex-direction: column;
 			top: calc(100% - 88px - 10%);
+			left: 40px;
+			right: 40px;
+			width: calc(100vw - 80px);
 		}
 
 		& .sectionTitle {
 			font-family: 'Montserrat', sans-serif;
-			font-size: 20px;
-			line-height: 28px;
+			font-size: 16px;
+			line-height: 24px;
 			font-weight: normal;
 			color: $primary-gray;
 			white-space: pre-wrap;
-			margin-top: 16px;
+			width: 45%;
+
+			@media screen and (max-width: $media-desktop) {
+				width: 100%;
+				margin-bottom: 24px;
+			}
+		}
+
+		& .slider {
+			width: 50%;
+			height: calc(1280px / 2 / 1.56);
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			z-index: 0;
+			box-shadow: 0 12px 24px 0px #00000005;
+			transition: box-shadow 0.3s;
+
+			@media screen and (max-width: $media-desktop) {
+				width: 100%;
+				height: calc((100vw - 80px) / 1.56);
+			}
+
+			& .sliderContainer {
+				display: flex;
+				height: 100%;
+				width: 100%;
+				padding-top: 7%;
+
+				& .sideBar {
+					display: flex;
+					flex-direction: column;
+					flex-basis: 22%;
+					padding: 12px 20px;
+					overflow-y: auto;
+					background-color: $primary-light-gray;
+					border-bottom-left-radius: 6px;
+					border: 1px solid $primary-gray;
+					border-top: none;
+
+					@media screen and (max-width: $media-desktop) {
+						padding: 8px;
+						border: none;
+					}
+
+					& .sideBarItem {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						width: 100%;
+						height: calc((1280px * 0.5 * 0.22 - 40px) / 1.41);
+						border: 2px solid transparent;
+						border-radius: 6px;
+						cursor: pointer;
+
+						@media screen and (max-width: $media-desktop) {
+							height: calc((100vw * 0.22 - 40px) / 1.41);
+						}
+
+						&.selectedSideBarItem {
+							border: 2px solid $black-grey;
+							border-radius: 6px;
+						}
+
+						&:not(:last-child) {
+							margin-bottom: 12px;
+						}
+
+						& > div {
+							height: 85%;
+							width: auto;
+							background-color: #d9d9d9;
+							border-radius: 4px;
+							padding: 1px;
+
+							& > img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+								border-radius: 3px;
+							}
+						}
+					}
+				}
+
+				& .content {
+					flex: 1;
+					padding: 24px 32px;
+
+					@media screen and (max-width: $media-desktop) {
+						padding: 8px 12px;
+					}
+
+					& .contentContainer {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						background-size: contain;
+						background-position: center;
+						background-repeat: no-repeat;
+						border-radius: 12px;
+
+						& .currentSlide {
+							position: absolute;
+							width: calc((1280px * 0.5 * 0.78 - 64px) * 0.8);
+							height: calc((1280px * 0.5 * 0.78 - 64px) * 0.8 / 0.84);
+							background-color: #d9d9d9;
+							transform: translate(-50%, -50%);
+							left: 50%;
+							top: 50%;
+							border-radius: 20px;
+							padding: 30px 20px 20px;
+
+							@media screen and (max-width: $media-desktop) {
+								width: calc((100vw * 0.78 - 64px) * 0.5);
+								height: calc((100vw * 0.78 - 64px) * 0.5 / 0.84);
+								border-radius: 8px;
+							}
+
+							@media screen and (max-width: $media-phone) {
+								padding: 12px 8px 8px;
+							}
+
+							& .progressBarWrapper {
+								display: flex;
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								height: 32px;
+								width: 100%;
+								z-index: 2;
+								gap: 0 4px;
+								padding: 0 20px;
+
+								@media screen and (max-width: $media-phone) {
+									height: 12px;
+									padding: 0 8px;
+								}
+							}
+
+							& > img {
+								width: 100%;
+								height: 100%;
+								object-fit: contain;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		&.fixed {

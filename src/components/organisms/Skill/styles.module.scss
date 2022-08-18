@@ -21,6 +21,7 @@
 		background-color: $primary-dark;
 		transition: max-width 0.6s;
 		padding: 80px;
+		z-index: 1;
 
 		@media screen and (max-width: $media-desktop) {
 			max-width: none;

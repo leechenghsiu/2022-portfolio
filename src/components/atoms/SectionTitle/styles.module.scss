@@ -19,7 +19,7 @@
 		}
 
 		@media screen and (max-width: $media-phone) {
-			font-size: 48px;
+			font-size: 40px;
 		}
 	}
 
@@ -31,11 +31,10 @@
 		color: $primary-gray;
 		white-space: pre-wrap;
 		width: 100%;
-		padding-right: 40px;
 
 		@media screen and (max-width: $media-phone) {
-			font-size: 16px;
-			line-height: 24px;
+			font-size: 14px;
+			line-height: 22px;
 		}
 	}
 }

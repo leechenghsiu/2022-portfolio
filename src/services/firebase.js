@@ -21,6 +21,8 @@ export const auth = getAuth(firebaseApp);
 
 // Firestore
 const db = getFirestore(firebaseApp);
+export const introDocRef = id => (id ? doc(db, 'intro', id) : doc(db, 'intro'));
+export const introCollectionRef = () => collection(db, 'intro');
 export const skillDocRef = id => (id ? doc(db, 'skill', id) : doc(db, 'skill'));
 export const skillCollectionRef = () => collection(db, 'skill');
 export const projectDocRef = id => (id ? doc(db, 'project', id) : doc(db, 'project'));
