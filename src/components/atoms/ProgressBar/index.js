@@ -26,7 +26,9 @@ const ProgressBar = ({ status, goNext }) => {
 	}, [transitionRef, status]);
 
 	useEffect(() => {
-		setDuration(5);
+		if (status !== null) {
+			setDuration(5);
+		}
 	}, [status]);
 
 	const style = () => {
