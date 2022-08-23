@@ -22,4 +22,9 @@
 	& strong {
 		font-weight: bold;
 	}
+
+	& img {
+		display: inline !important;
+		vertical-align: top !important;
+	}
 }

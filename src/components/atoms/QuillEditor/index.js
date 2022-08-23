@@ -49,6 +49,10 @@ const QuillEditor = ({ value, onChange, type }) => {
 		imageResize: {
 			parchment: Quill.import('parchment'),
 			modules: ['Resize', 'DisplaySize'],
+			displayStyles: {
+				display: 'inline',
+				verticalAlign: 'top',
+			},
 		},
 		toolbar: {
 			container: [
