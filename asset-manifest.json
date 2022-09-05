@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/2022-portfolio/static/css/main.3ebe00f5.chunk.css",
-    "main.js": "/2022-portfolio/static/js/main.0b3b2a34.chunk.js",
-    "main.js.map": "/2022-portfolio/static/js/main.0b3b2a34.chunk.js.map",
+    "main.css": "/2022-portfolio/static/css/main.1742d628.chunk.css",
+    "main.js": "/2022-portfolio/static/js/main.86dfa430.chunk.js",
+    "main.js.map": "/2022-portfolio/static/js/main.86dfa430.chunk.js.map",
     "runtime-main.js": "/2022-portfolio/static/js/runtime-main.353a4281.js",
     "runtime-main.js.map": "/2022-portfolio/static/js/runtime-main.353a4281.js.map",
     "static/css/2.f83b9687.chunk.css": "/2022-portfolio/static/css/2.f83b9687.chunk.css",
-    "static/js/2.6d49fd75.chunk.js": "/2022-portfolio/static/js/2.6d49fd75.chunk.js",
-    "static/js/2.6d49fd75.chunk.js.map": "/2022-portfolio/static/js/2.6d49fd75.chunk.js.map",
+    "static/js/2.536e128b.chunk.js": "/2022-portfolio/static/js/2.536e128b.chunk.js",
+    "static/js/2.536e128b.chunk.js.map": "/2022-portfolio/static/js/2.536e128b.chunk.js.map",
     "static/js/3.81ccebaf.chunk.js": "/2022-portfolio/static/js/3.81ccebaf.chunk.js",
     "static/js/3.81ccebaf.chunk.js.map": "/2022-portfolio/static/js/3.81ccebaf.chunk.js.map",
     "index.html": "/2022-portfolio/index.html",
     "static/css/2.f83b9687.chunk.css.map": "/2022-portfolio/static/css/2.f83b9687.chunk.css.map",
-    "static/css/main.3ebe00f5.chunk.css.map": "/2022-portfolio/static/css/main.3ebe00f5.chunk.css.map",
-    "static/js/2.6d49fd75.chunk.js.LICENSE.txt": "/2022-portfolio/static/js/2.6d49fd75.chunk.js.LICENSE.txt",
+    "static/css/main.1742d628.chunk.css.map": "/2022-portfolio/static/css/main.1742d628.chunk.css.map",
+    "static/js/2.536e128b.chunk.js.LICENSE.txt": "/2022-portfolio/static/js/2.536e128b.chunk.js.LICENSE.txt",
     "static/media/bg-slider-show-lg.f96803c8.png": "/2022-portfolio/static/media/bg-slider-show-lg.f96803c8.png",
     "static/media/close.33e70d04.svg": "/2022-portfolio/static/media/close.33e70d04.svg",
     "static/media/language.0556546d.svg": "/2022-portfolio/static/media/language.0556546d.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.353a4281.js",
     "static/css/2.f83b9687.chunk.css",
-    "static/js/2.6d49fd75.chunk.js",
-    "static/css/main.3ebe00f5.chunk.css",
-    "static/js/main.0b3b2a34.chunk.js"
+    "static/js/2.536e128b.chunk.js",
+    "static/css/main.1742d628.chunk.css",
+    "static/js/main.86dfa430.chunk.js"
   ]
 }
