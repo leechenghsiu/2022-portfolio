@@ -47,6 +47,13 @@ const Header = ({ className, open }) => {
 						</button>
 					</li>
 				</ul>
+				<button
+					className={styles.mobileButton}
+					type="button"
+					onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en')}
+				>
+					<Language />
+				</button>
 			</nav>
 		</header>
 	);

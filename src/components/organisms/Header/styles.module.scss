@@ -114,5 +114,15 @@
 				}
 			}
 		}
+
+		& .mobileButton {
+			display: none;
+
+			@media screen and (max-width: $media-desktop) {
+				display: flex;
+				border: none;
+				background-color: transparent;
+			}
+		}
 	}
 }
