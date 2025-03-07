@@ -1,23 +1,23 @@
 {
-    "intro": {
-        "title": "嗨，我是李承修",
-        "subtitle-1": "對網頁開發充滿熱情，也對人機互動領域相當感興趣。",
-        "subtitle-2": "目前仍持續精進更多的網頁開發技術。"
-    },
-    "project": {
-        "student-project-title": "學生專案",
-        "student-project-subtitle": "大四一整年，與指導教授討論並與同學一起製作的畢業專題。",
-        "work-project-title": "工作專案",
-        "work-project-subtitle": "採用敏捷式開發流程，跨公司協作也不成問題。",
-        "side-project-title": "其他專案",
-        "side-project-subtitle": "利用下班空閒時間與朋友承接案子並進行開發。"
-    },
-    "experience": {
-        "experience-title": "經歷",
-        "experience-subtitle": "每個階段嘗試不同新鮮事物，並從中獲取新知。",
-        "education-title": "求學經歷",
-        "work-experience-title": "工作經歷",
-        "activity-title": "活動經歷",
-        "ing": "現今"
-    }
+	"intro": {
+		"title": "嗨，我是李承修",
+		"subtitle-1": "專注於人機互動的網頁開發者，熱衷於打造整合軟體開發、雲端解決方案與使用者研究的解決方案與服務，以提供有意義且以使用者為中心的體驗。",
+		"subtitle-2": ""
+	},
+	"project": {
+		"student-project-title": "學生專案",
+		"student-project-subtitle": "大四一整年，與指導教授討論並與同學一起製作的畢業專題。",
+		"work-project-title": "工作專案",
+		"work-project-subtitle": "採用敏捷式開發流程，跨公司協作也不成問題。",
+		"side-project-title": "其他專案",
+		"side-project-subtitle": "利用下班空閒時間與朋友承接案子並進行開發。"
+	},
+	"experience": {
+		"experience-title": "經歷",
+		"experience-subtitle": "每個階段嘗試不同新鮮事物，並從中獲取新知。",
+		"education-title": "求學經歷",
+		"work-experience-title": "工作經歷",
+		"activity-title": "活動經歷",
+		"ing": "現今"
+	}
 }
